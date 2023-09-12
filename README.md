@@ -15,15 +15,16 @@ lorsque la montagne est arrivée, il nous a paru évident de choisir le projet d
 
 
 Le site sera composé d'une homepage, un acces profil utilisateur, un acces liste de produit par catégorie, un acces porduit seul, un acces page "back in stock" et enfin, une page pour les nouveautées;
-Chaque page aura une nav bar avec login, wishlit (panier fictif), 
+Chaque page aura un header avec nav bar avec login, wishlit (panier fictif) et une barre de recherche, il y aura aussi un recap des différents liens (nouveautées, back in stock, collier, bracelets, bagues, boucles d'oreilles).
 
 * Homepage
+ *  bloc image avec les différentes catégories (colliers, bagues, ...)
 * Nouveautées
 * Back in stock
 * Liste de produit par catégorie
 * Produit seul
 * Profil utilisateur
- * recap des infos avec modif possible
+ * Recap des infos avec modif possible
   *  Nom
   *  Prenom
   *  Adresse mail
