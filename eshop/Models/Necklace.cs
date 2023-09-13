@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using eshop.Data;
 
 namespace test_2.Models;
 
@@ -15,4 +16,5 @@ public class Necklace
     public string Description { get; set; } // avec le type de métal, de pierre ainsi que l'entretien
     public string Warranty { get; set; } // garantie
     public string Expedition { get; set; } // livraison
+    public JewelCategory JewelCategory { get; set; }
 }
