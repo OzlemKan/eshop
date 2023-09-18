@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using eshop.Data;
+using eshop.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
 
@@ -20,6 +21,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     var connectionString = configuration.GetConnectionString("DefaultConnection");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
+
+builder.Services.AddScoped<ICustomersService, CustomersService>();
+    
 
 var app = builder.Build();
 

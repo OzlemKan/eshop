@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eshop.Data.Services;
 
-public interface ICustomerService
+public interface ICustomersService
 {
-    IEnumerable<Customers> GetAll();
+    Task<IEnumerable<Customers>> GetAll();
 
     Customers GetById(int id);
 
