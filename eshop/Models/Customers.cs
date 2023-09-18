@@ -7,25 +7,32 @@ public class Customers
     [Key]
     public int    CustomerId { get; set; }
     
-    [Required]
-    public string FirstName { get; set; }
     
     [Required]
-    public string LastName { get; set; }
+    [Display(Name = "First Name")]
+    public string? FirstName { get; set; }
+    
+    [Required]
+    [Display(Name = "Last Name")]
+    public string? LastName { get; set; }
     
     [Required]
     [EmailAddress]
-    public string Email { get; set; }
+    [Display(Name = "Email")]
+    public string? Email { get; set; }
     
     [Required]
-    public string Address { get; set; }
+    [Display(Name = "Address")]
+    public string? Address { get; set; }
     
     [Required]
     [Phone]
-    public string PhoneNumber { get; set; }
+    [Display(Name = "Phone Number")]
+    public string? PhoneNumber { get; set; }
     
     [Required]
     [DataType(DataType.Date)]
+    [Display(Name = "Birthday")]
     public DateTime Birthday { get; set; }
     
 }
