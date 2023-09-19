@@ -5,16 +5,13 @@ namespace eshop.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+// AppDbContext est un constructor
+        public AppDbContext(DbContextOptions<AppDbContext> options, DbSet<Orders> orders): base(options)
         {
+            Orders = orders;
         }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options, DbSet<Customers> customers) : base(options)
-        {
-            Customers = customers;
-        }
-
-        public DbSet<Customers> Customers { get; set; }
+        public DbSet<Orders> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
