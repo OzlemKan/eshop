@@ -5,11 +5,11 @@ namespace eshop.Data.Services;
 
 public interface ICustomersService
 {
-    Task<IEnumerable<Customers>> GetAll();
+    Task<IEnumerable<Customers>> GetAllAsync();
 
-    Customers GetById(int id);
+    Task<Customers> GetByIdAsync(int id);
 
-    void Add(Customers customers);
+    Task AddAsync(Customers customers);
     
     Customers Update(int id, Customers newCustomers);
 

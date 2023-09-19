@@ -12,21 +12,27 @@ public class CustomersService : ICustomersService
         _context = context;
     }
     
-    public async Task<IEnumerable<Customers>> GetAll()
+    public async Task<IEnumerable<Customers>> GetAllAsync()
     {
         var result = await _context.Customers.ToListAsync();
         return result;
     }
 
-    public Customers GetById(int id)
+    public async Task<Customers> GetByIdAsync(int id)
+    {
+        var result = await _context.Customers.FirstOrDefaultAsync(n => n.CustomerId == id);
+        return result;
+    }
+
+    public Task AddAsync(Customers customers)
     {
         throw new NotImplementedException();
     }
 
-    public void Add(Customers customers)
+    public async Task Add(Customers customers)
     {
-        _context.Customers.Add(customers);
-        _context.SaveChanges();
+        await _context.Customers.AddAsync(customers);
+        await _context.SaveChangesAsync();
     }
 
     public Customers Update(int id, Customers newCustomers)
