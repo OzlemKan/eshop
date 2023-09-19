@@ -28,6 +28,7 @@ public class CustomersService : ICustomersService
     {
         throw new NotImplementedException();
     }
+    
 
     public async Task Add(Customers customers)
     {
@@ -35,14 +36,38 @@ public class CustomersService : ICustomersService
         await _context.SaveChangesAsync();
     }
 
-    public Customers Update(int id, Customers newCustomers)
+    public async Task<Customers> UpdateAsync(int id, Customers newCustomer)
     {
-        throw new NotImplementedException();
+        // Find the existing customer by its unique identifier
+        var existingCustomer = await _context.Customers.FindAsync(id);
+
+        if (existingCustomer == null)
+        {
+            // Handle the case where the customer with the specified ID doesn't exist
+            return null;
+        }
+
+        // Update the properties of the existing customer with the new data
+        existingCustomer.FirstName = newCustomer.FirstName;
+        existingCustomer.LastName = newCustomer.LastName;
+        existingCustomer.Email = newCustomer.Email;
+        existingCustomer.Address = newCustomer.Address;
+        existingCustomer.PhoneNumber = newCustomer.PhoneNumber;
+        existingCustomer.Birthday = newCustomer.Birthday;
+
+        // Save changes to the database
+        await _context.SaveChangesAsync();
+
+        // Return the updated existing customer object
+        return existingCustomer;
     }
 
-    public void Delete(int id)
+
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var result = await _context.Customers.FirstOrDefaultAsync(n => n.CustomerId == id);
+        _context.Customers.Remove(result);
+        await _context.SaveChangesAsync();
     }
 }
 

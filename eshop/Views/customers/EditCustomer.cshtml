@@ -1,0 +1,57 @@
+@model Customers
+
+@{
+    ViewData["Title"] = "Update Customer";
+}
+Ò
+<h1>Update Customer</h1>
+
+<div>
+    <form asp-action="EditCustomer">
+        <div asp-validation-summary="ModelOnly"></div>
+        
+   
+    
+    <div>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName"/>
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    
+    <div>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName"/>
+        <span asp-validation-for="LastName"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email"/>
+        <span asp-validation-for="Email"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Address"></label>
+        <input asp-for="Address"/>
+        <span asp-validation-for="Address"></span>
+    </div>
+        
+    
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber"/>
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Birthday"></label>
+        <input asp-for="Birthday"/>
+        <span asp-validation-for="Birthday"></span>
+    </div>
+    
+    <div>
+    <input type="submit" value="Update"/>
+    </div>
+        </form>
+    
+</div>

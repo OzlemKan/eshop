@@ -43,7 +43,60 @@ public class CustomersController : Controller
     {
         var customerDetails = await _service.GetByIdAsync(id);
 
-        if (customerDetails == null) return View("Empty");
         return View(customerDetails);
+    }
+    //EDIT CUSTOMER
+    public async Task <IActionResult> EditCustomer(int id)
+    
+    {
+        var customerDetails = await _service.GetByIdAsync(id);
+        if (customerDetails == null) return NotFound();
+        return View(customerDetails);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditCustomer(int id, [Bind("CustomerId, FirstName, LastName, Email, Address, PhoneNumber, Birthday")] Customers customer)
+    {
+        if (ModelState.IsValid)
+        {
+            // ModelState is valid, so attempt to update the customer
+            var updatedCustomer = await _service.UpdateAsync(id, customer);
+
+            if (updatedCustomer == null)
+            {
+                // Handle the case where the customer with the specified ID was not found
+                return NotFound();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        // ModelState is not valid, return the view with validation errors
+        return View(customer);
+    }
+
+    
+    
+    
+    //DELETE CUSTOMER
+    
+    public async Task <IActionResult> DeleteCustomer(int id)
+    
+    {
+        var customerDetails = await _service.GetByIdAsync(id);
+        if (customerDetails == null) return View("Not Found");
+        return View(customerDetails);
+    }
+
+    [HttpPost, ActionName("DeleteCustomer")]
+    public async Task<IActionResult> DeleteCustomerConfirmed(int id)
+    {
+        var customerDetails = await _service.GetByIdAsync(id);
+        if (customerDetails == null) return View("Not Found");
+        
+        await _service.DeleteAsync(id);
+        return RedirectToAction("index");
+
+        
     }
 }

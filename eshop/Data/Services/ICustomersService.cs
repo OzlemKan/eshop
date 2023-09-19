@@ -11,8 +11,8 @@ public interface ICustomersService
 
     Task AddAsync(Customers customers);
     
-    Customers Update(int id, Customers newCustomers);
+    Task <Customers> UpdateAsync(int id, Customers newCustomer);
 
-    void Delete(int id);
+    Task DeleteAsync(int id);
 
 }

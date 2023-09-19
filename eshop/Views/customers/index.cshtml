@@ -41,6 +41,8 @@
             <td>@Html.DisplayFor(modelItem => item.Birthday)</td>
             <td>
                 <a asp-action="GetCustomerById" asp-route-id="@item.CustomerId">View</a>
+                <a asp-action="EditCustomer" asp-route-id="@item.CustomerId">Edit</a>
+                <a asp-action="DeleteCustomer" asp-route-id="@item.CustomerId">Delete</a>
             </td>
         </tr>
     }
