@@ -1,17 +1,16 @@
 using eshop.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace eshop.Data
 {
     public class AppDbContext : DbContext
     {
-// AppDbContext est un constructor
-        public AppDbContext(DbContextOptions<AppDbContext> options, DbSet<Orders> orders): base(options)
-        {
-            Orders = orders;
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
+        { }
 
         public DbSet<Orders> Orders { get; set; }
+        public DbSet<Products> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,14 +1,12 @@
 using System.ComponentModel.DataAnnotations;
-using eshop.Data;
-using eshop.Models;
 
-namespace test_2.Models;
+namespace eshop.Models;
 
 public class Products
 {
     [Key]
     public int ProductId { get; set; }
-
+    
     public required string  ProductName { get; set; } 
     
     public required string ProductImage { get; set; }

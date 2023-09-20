@@ -1,7 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using eshop.Models;
 using Microsoft.EntityFrameworkCore;
-
 namespace eshop.Models;
 
 public class Orders
