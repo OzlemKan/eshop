@@ -50,7 +50,7 @@ public class CustomersController : Controller
     
     {
         var customerDetails = await _service.GetByIdAsync(id);
-        if (customerDetails == null) return NotFound();
+        if (customerDetails == null) return View("NotFound");
         return View(customerDetails);
     }
 
@@ -84,7 +84,7 @@ public class CustomersController : Controller
     
     {
         var customerDetails = await _service.GetByIdAsync(id);
-        if (customerDetails == null) return View("Not Found");
+        if (customerDetails == null) return View("NotFound");
         return View(customerDetails);
     }
 
@@ -92,7 +92,7 @@ public class CustomersController : Controller
     public async Task<IActionResult> DeleteCustomerConfirmed(int id)
     {
         var customerDetails = await _service.GetByIdAsync(id);
-        if (customerDetails == null) return View("Not Found");
+        if (customerDetails == null) return View("NotFound");
         
         await _service.DeleteAsync(id);
         return RedirectToAction("index");
