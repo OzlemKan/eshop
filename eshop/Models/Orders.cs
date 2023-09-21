@@ -6,6 +6,12 @@ public class Orders
 {
     [Key]
     public int OrderId { get; set; }
+
+    public string? Email { get; set; } // for the order to be related to a user
+
+    public string? UserId { get; set; }
+
+    public List<OrderItem>? OrderItems { get; set; }
     
     [Required]
     public string? OrderName { get; set; }

@@ -9,8 +9,15 @@ namespace eshop.Data
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
         { }
 
-        public DbSet<Orders> Orders { get; set; }
+       
         public DbSet<Products> Products { get; set; }
+        
+        //Orders related tables
+        public DbSet<Orders> Orders { get; set; }
+        
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        
         
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
