@@ -4,18 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eshop.Data
 {
-    public class AppDbContext : IdentityDbContext<ApplicationUser>
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-
-        public AppDbContext(DbContextOptions<AppDbContext> options, DbSet<Customers> customers) : base(options)
-        {
-            Customers = customers;
-        }
+        
 
         public DbSet<Customers> Customers { get; set; }
+        public DbSet<Products> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
