@@ -10,6 +10,16 @@
     <form asp-action="AddProduct">
         <div asp-validation-summary="ModelOnly"></div>
         <div>
+              <img id="ProductImagePreview"  style="max-width: 200px; max-height: 200px;" alt="" src=""/>
+        </div>
+        
+
+        <div>
+            <label asp-for="ProductImage"></label>
+            <input asp-for="ProductImage"/>
+            <span asp-validation-for="ProductImage"></span>
+        </div>
+        <div>
             <label asp-for="ProductName"></label>
             <input asp-for="ProductName"/>
             <span asp-validation-for="ProductName"></span>
@@ -26,14 +36,7 @@
             <input asp-for="ProductDelivery"/>
             <span asp-validation-for="ProductDelivery"></span>
         </div>
-    
-        <div>
-            <label asp-for="ProductImage"></label>
-            <input asp-for="ProductImage"/>
-            <span asp-validation-for="ProductImage"></span>
-        </div>
         
-    
         <div>
             <label asp-for="ProductDescription"></label>
             <input asp-for="ProductDescription"/>
@@ -44,4 +47,20 @@
             <input type="submit" value="Add product"/>
         </div>
     </form>
-    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+                    var output = document.getElementById('ProductImagePreview');
+                    output.src = $("#ProductImage").val();
+                })
+        
+                $("#ProductImage").on("change", function () {
+                    var output = document.getElementById('ProductImagePreview');
+                    output.src = $(this).val();
+                })
+    </script>
+}
+
