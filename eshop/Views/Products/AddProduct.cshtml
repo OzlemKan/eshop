@@ -1,3 +1,5 @@
+@using eshop.Data
+
 @model Products
 
 @{
@@ -27,9 +29,15 @@
     
         <div>
             <label asp-for="ProductCategory"></label>
-            <input asp-for="ProductCategory"/>
+            <select asp-for="ProductCategory" asp-items="Html.GetEnumSelectList<ProductCategory>()"></select>
             <span asp-validation-for="ProductCategory"></span>
         </div>
+        
+        <div>
+                    <label asp-for="ProductPrice"></label>
+                    <input asp-for="ProductPrice"/>
+                    <span asp-validation-for="ProductPrice"></span>
+                </div>
     
         <div>
             <label asp-for="ProductDelivery"></label>

@@ -9,28 +9,28 @@ public class Products
     [Key]
     public int ProductId { get; set; }
     
-    [Display(Name = "Product Name")]
+    [Display(Name = "Name")]
     public required string  ProductName { get; set; } 
     
-    [Display(Name = "Product Image")]
+    [Display(Name = "Image")]
     public required string ProductImage { get; set; }
         
     
     [Required]
     [DataType(DataType.Currency)]
-    [Display(Name = "Product Price")]
+    [Display(Name = "Price")]
     public decimal ProductPrice { get; set; }
     
     [Required]    
-    [Display(Name = "Product Quantity")]
+    [Display(Name = "Quantity")]
     public int ProductQuantity { get; set; }
     
-    [Display(Name = "Product Description")]
+    [Display(Name = "Description")]
     public required string ProductDescription { get; set; }
     
-    [Display(Name = "Product Delivery")]
+    [Display(Name = "Delivery")]
     public required string ProductDelivery { get; set; }
     
-    [Display(Name = "Product Category")]
+    [Display(Name = "Category")]
     public  ProductCategory ProductCategory { get; set; }
 }

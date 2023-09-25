@@ -7,8 +7,15 @@
 <h1>Product Details</h1>
 
 <div>
-   
-    
+    <div>
+        <img id="ProductImagePreview"  style="max-width: 200px; max-height: 200px;" alt="" src=""/>
+    </div>
+           
+    <div>
+        <label asp-for="ProductImage"></label>
+        <input asp-for="ProductImage" readonly/>
+        <span asp-validation-for="ProductImage"></span>
+    </div>
     <div>
         <label asp-for="ProductName"></label>
         <input asp-for="ProductName" readonly/>
@@ -34,11 +41,7 @@
     </div>
         
     
-    <div>
-        <label asp-for="ProductImage"></label>
-        <input asp-for="ProductImage" readonly/>
-        <span asp-validation-for="ProductImage"></span>
-    </div>
+  
     
     <div>
         <label asp-for="ProductPrice"></label>
@@ -51,3 +54,18 @@
     
     
 </div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+                    var output = document.getElementById('ProductImagePreview');
+                    output.src = $("#ProductImage").val();
+                })
+        
+                $("#ProductImage").on("change", function () {
+                    var output = document.getElementById('ProductImagePreview');
+                    output.src = $(this).val();
+                })
+    </script>
+}
