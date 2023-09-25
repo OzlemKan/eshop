@@ -9,6 +9,10 @@
 <head>
     <title>List of products</title>
 </head>
+
+<a class="btn btn-outline-secondary" asp-action="AddProduct">Add a new Product</a>
+
+
 <body>
     <h1>list of products</h1>
     <div>
@@ -40,9 +44,9 @@
                         <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDelivery)</td>
                         <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDescription)</td>
                         <td class="align-middle">
-                            <a asp-action="GetProductById" asp-route-id="@item.ProductId">View</a>
-                            <a asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a>
-                            <a asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
+                            <a class="btn btn-outline-secondary" asp-action="GetProductById" asp-route-id="@item.ProductId">View</a>
+                            <a class="btn btn-outline-secondary" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a>
+                            <a class="btn btn-outline-secondary" asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
                         </td>
                     </tr>
                 }

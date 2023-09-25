@@ -1,17 +1,14 @@
 @model Products
 
 @{
-    ViewData["Title"] = "Update Product";
+    ViewData["Title"] = "Add a new product";
 }
 
-<h1>Update Customer</h1>
+<h1>Add a new product</h1>
 
 <div>
-    <form asp-action="EditProduct">
+    <form asp-action="AddProduct">
         <div asp-validation-summary="ModelOnly"></div>
-        
-   
-    
         <div>
             <label asp-for="ProductName"></label>
             <input asp-for="ProductName"/>
@@ -42,13 +39,9 @@
             <input asp-for="ProductDescription"/>
             <span asp-validation-for="ProductDescription"></span>
         </div>
-    
-       
+
         <div>
-            <input class="btn btn-outline-secondary" type="submit" value="Update"/>
-            <a class="btn btn-outline-secondary" asp-action="Index">Show All Products</a>
+            <input type="submit" value="Add product"/>
         </div>
-        
     </form>
-    
-</div>
+    </div>

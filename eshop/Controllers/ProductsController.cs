@@ -22,12 +22,6 @@ public class ProductsController : Controller
         return View(allProducts);
     }
     
-    public async Task<IActionResult> GetProductById(int id)
-    {
-        var productDetails = await _service.GetByIdAsync(id);
-
-        return View(productDetails);
-    }
 
     public async Task <IActionResult> EditProduct(int id)
     
@@ -78,5 +72,31 @@ public class ProductsController : Controller
         return RedirectToAction("index");
 
         
+    }
+//ADD A NEW PRODUCT
+    public IActionResult AddProduct()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddProduct(
+        [Bind("ProductName, ProductImage, ProductPrice, ProductDelivery, ProductDescription, ProductCategory")] Products product)
+    {
+        if (ModelState.IsValid)
+        {
+            await _service.AddAsync(product);
+            return RedirectToAction("Index");
+        }
+
+        return View(product);
+    }
+
+    
+    public async Task<IActionResult> GetProductById(int id)
+    {
+        var productDetails = await _service.GetByIdAsync(id);
+
+        return View(productDetails);
     }
 }

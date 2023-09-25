@@ -24,13 +24,10 @@ public class ProductService : IProductService
         return result;
     }
 
-    public Task AddAsync(Products products)
-    {
-        throw new NotImplementedException();
-    }
-    
+   
 
-    public async Task Add(Products products)
+
+    public async Task AddAsync(Products products)
     {
         await _context.Products.AddAsync(products);
         await _context.SaveChangesAsync();
