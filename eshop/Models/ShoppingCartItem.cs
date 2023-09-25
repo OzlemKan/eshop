@@ -12,7 +12,7 @@ public class ShoppingCartItem
 
     public int Amount { get; set; }
 
-    public string? ShoppingCartId { get; set; }
+    public string? ShoppingCartId { get; set; } 
     
     
 }

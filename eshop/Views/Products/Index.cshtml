@@ -1,4 +1,4 @@
-@Model IEnumerable<products/>
+@model IEnumerable<Products>
 
 @{
     ViewData["Title"] = "List of Products";
@@ -10,9 +10,50 @@
     <title>List of products</title>
 </head>
 <body>
-<h1>welcome to the product view - index</h1>
-<div>
-    
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ProductImage)</th>
+                    <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                    <th>@Html.DisplayNameFor(model => model.ProductDescription)</th>
+                    <th>@Html.DisplayNameFor(model => model.ProductPrice)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) // on va dans tous les items et
+            {
+                <tr>
+                    <td class="align-middle">
+                        <img src="@item.ProductImage" alt="@item.ProductName"/>
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+                    <td>
+                        <a><i class="bi bi-x-circle"></i></a> //delete
+                        <a><i class="bi bi-plus-circle-fill"></i></a> // add
+                        <a><i class="bi bi-wrench-adjustable-circle"></i></a> // edit
+                    </td>
+                </tr>
+            }
+            </tbody>
+           
+        </table>
+        
+    </div>
+
 </div>
 </body>
 </html>

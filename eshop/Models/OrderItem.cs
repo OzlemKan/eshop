@@ -14,7 +14,7 @@ public class OrderItem
     public double Price { get; set; }
 
     public int ProductId { get; set; }
-    [ForeignKey("ProductsId")]
+    [ForeignKey("ProductId")]
 
     public Products? Products { get; set; } // relira direct au model product
     

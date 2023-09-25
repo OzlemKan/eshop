@@ -19,7 +19,7 @@ namespace eshop.Controllers
         {
             var data = _context.Products.ToList();
             
-            return View(data);
+            return View(data); // list of product
         }
     }
 
