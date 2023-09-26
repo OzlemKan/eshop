@@ -1,5 +1,7 @@
 using eshop.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
+using IdentityRole = Microsoft.AspNetCore.Identity.IdentityRole;
 
 namespace eshop.Data;
 
@@ -16,19 +18,20 @@ public class AppDbInitializer
         {
             context.Customers.AddRange(new List<Customers>()
             {
-            new Customers()
-            {
-                FirstName = "Julie",
-                LastName = "Dubois",
-                Address = "rue Neuve 23, 1000 Bruxelles",
-                Email = "julie@gmail.com",
-                PhoneNumber = "045687654",
-                Birthday = Convert.ToDateTime("1990-03-23")
-            }
-            
+                new Customers()
+                {
+                    FirstName = "Julie",
+                    LastName = "Dubois",
+                    Address = "rue Neuve 23, 1000 Bruxelles",
+                    Email = "julie@gmail.com",
+                    PhoneNumber = "045687654",
+                    Birthday = Convert.ToDateTime("1990-03-23")
+                }
+
             });
 
             context.SaveChanges();
         }
     }
+
 }

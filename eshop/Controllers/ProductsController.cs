@@ -32,7 +32,7 @@ public class ProductsController : Controller
     }
     
     [HttpPost]
-    public async Task<IActionResult> EditProduct(int id, [Bind("ProductId, ProductName, LastName, Email, Address, PhoneNumber, Birthday")] Products product)
+    public async Task<IActionResult> EditProduct(int id, [Bind("ProductName, ProductImage, ProductPrice, ProductDelivery, ProductDescription, ProductCategory")] Products product)
     {
         if (ModelState.IsValid)
         {
