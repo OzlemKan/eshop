@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace eshop.Models;
 
-public class Customers
+public partial class Customers
 {
     [Key]
     public int    CustomerId { get; set; }
