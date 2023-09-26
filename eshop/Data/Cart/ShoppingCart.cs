@@ -28,7 +28,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
 
         if (shoppingCartItem == null) // check if shopping cart is empty
         {
-            ShoppingCartItem == new ShoppingCartItem()
+            ShoppingCartItem = new ShoppingCartItem()
             {
                 ShoppingCartId = ShoppingCartId,
                 Products = products,
@@ -76,14 +76,11 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     }
 //  get the  shopping cart total 
 
-    /*public double GetShoppingCartTotal()  => _context.ShoppingCartItems
+    public decimal GetShoppingCartTotal()  => _context.ShoppingCartItems
         .Where(n => n.ShoppingCartId == ShoppingCartId)
         .Select(n => n.Products.ProductPrice * n.Amount)
         .Sum();
         
-    }*/
-
-}
-
+    }
 
 // quand on fait n => n. cela veut dire : for each item
