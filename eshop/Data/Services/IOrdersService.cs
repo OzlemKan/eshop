@@ -5,13 +5,13 @@ namespace eshop.Data.Services;
 
 public interface IOrdersService
 {
-    IEnumerable<Orders> GetAll();
+    IEnumerable<Order> GetAll();
 
-    Orders GetById(int id);
+    Order GetById(int id);
 
-    void Add(Orders customers);
+    void Add(Order customers);
     
-    Orders Update(int id, Orders newOrders);
+    Order Update(int id, Order newOrder);
 
     void Delete(int id);
 

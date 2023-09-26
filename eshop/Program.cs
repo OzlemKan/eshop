@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using eshop.Data;
 using eshop.Data.Services;
@@ -49,4 +49,4 @@ app.MapControllerRoute(
 
 AppDbInitializer.Seed(app);
 
-app.Run();
+eapp.Run();

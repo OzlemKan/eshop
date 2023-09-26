@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 namespace eshop.Models;
 
-public class Orders
+public class Order
 {
     [Key]
-    public int OrderId { get; set; }
+    public int OrderId { get; set; } // identify of a order
 
     public string? Email { get; set; } // for the order to be related to a user
 

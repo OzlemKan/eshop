@@ -9,7 +9,7 @@ public class OrderItem
     [Key]
     public int OrderItemId { get; set; }
 
-    public int Amount { get; set; }
+    public int Amount { get; set; } 
 
     public double Price { get; set; }
 
@@ -18,10 +18,10 @@ public class OrderItem
 
     public Products? Products { get; set; } // relira direct au model product
     
-    public int OrdersId { get; set; }
-    [ForeignKey("OrdersId")]
+    public int OrderId { get; set; }
+    [ForeignKey("OrderId")]
 
-    public Orders? Orders { get; set; }
+    public Order? Order { get; set; }
     
     
     

@@ -13,8 +13,9 @@ namespace eshop.Data
 
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Products> Products { get; set; }
+        
         //Orders related tables
-        public DbSet<Orders> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; } 
