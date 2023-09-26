@@ -4,8 +4,7 @@ public enum ProductCategory
 {
     Necklace = 1,
     Ring,
-    Bracelet, 
+    Bracelet,
     Earrings,
     Set
-    
 }

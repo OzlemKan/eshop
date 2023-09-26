@@ -1,19 +1,20 @@
 using eshop.Models;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace eshop.Data.Services;
 
-public interface IProductsService
+public interface IProductService
 {
-    IEnumerable<Products> GetAll(); // get all the products from db
+    Task<IEnumerable<Products>> GetAllAsync();
 
-    Products GetById(int id); // method to return a single product
+    Task<Products> GetByIdAsync(int id);
 
-    void Add(Products customers); // method to add data to db, not to the user(void)
+    Task AddAsync(Products products);
     
-    Products Update(int productId, Products newProducts); // functionality to update data in the db
+    Task <Products> UpdateAsync(int id, Products newProduct);
 
-    void Delete(int productId); // delete method 
+    Task DeleteAsync(int id);
 
+   
+   
 }
-

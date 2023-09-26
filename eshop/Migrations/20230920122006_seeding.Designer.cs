@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eshop.Data;
 
@@ -10,72 +11,16 @@ using eshop.Data;
 namespace eshop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230920122006_seeding")]
+    partial class seeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-
-            modelBuilder.Entity("eshop.Models.OrderItem", b =>
-                {
-                    b.Property<int>("OrderItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("double");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderItemId");
-
-                    b.HasIndex("OrdersId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderItems");
-                });
-
-            modelBuilder.Entity("eshop.Models.Orders", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("OrderDelivery")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("OrderName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<decimal>("OrderPrice")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<int>("OrderQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("OrderId");
-
-                    b.ToTable("Orders");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -213,13 +158,6 @@ namespace eshop.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateOnly>("Birthday")
-                        .HasColumnType("date");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
@@ -230,14 +168,6 @@ namespace eshop.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
@@ -257,7 +187,6 @@ namespace eshop.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("PhoneNumberConfirmed")
@@ -317,99 +246,7 @@ namespace eshop.Migrations
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
-
                 });
-
-            modelBuilder.Entity("eshop.Models.Products", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductCategory")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductDelivery")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ProductDescription")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ProductImage")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<int>("ProductQuantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("Products");
-                });
-
-
-            modelBuilder.Entity("eshop.Models.ShoppingCartItem", b =>
-                {
-                    b.Property<int>("ShoppingCartItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductsProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCartId")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("ShoppingCartItemId");
-
-                    b.HasIndex("ProductsProductId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
-            modelBuilder.Entity("eshop.Models.OrderItem", b =>
-                {
-                    b.HasOne("eshop.Models.Orders", "Orders")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eshop.Models.Products", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Orders");
-
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("eshop.Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("eshop.Models.Products", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductsProductId");
-
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("eshop.Models.Orders", b =>
-                {
-                    b.Navigation("OrderItems");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
@@ -460,7 +297,6 @@ namespace eshop.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
                 });
 #pragma warning restore 612, 618
         }

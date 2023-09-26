@@ -1,0 +1,71 @@
+@model Products
+
+@{
+    ViewData["Title"] = "Details of the product";
+}
+
+<h1>Product Details</h1>
+
+<div>
+    <div>
+        <img id="ProductImagePreview"  style="max-width: 200px; max-height: 200px;" alt="" src=""/>
+    </div>
+           
+    <div>
+        <label asp-for="ProductImage"></label>
+        <input asp-for="ProductImage" readonly/>
+        <span asp-validation-for="ProductImage"></span>
+    </div>
+    <div>
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName" readonly/>
+        <span asp-validation-for="ProductName"></span>
+    </div>
+    
+    <div>
+        <label asp-for="ProductCategory"></label>
+        <input asp-for="ProductCategory" readonly/>
+        <span asp-validation-for="ProductCategory"></span>
+    </div>
+    
+    <div>
+        <label asp-for="ProductDelivery"></label>
+        <input asp-for="ProductDelivery" readonly/>
+        <span asp-validation-for="ProductDelivery"></span>
+    </div>
+    
+    <div>
+        <label asp-for="ProductDescription"></label>
+        <input asp-for="ProductDescription" readonly/>
+        <span asp-validation-for="ProductDescription"></span>
+    </div>
+        
+    
+  
+    
+    <div>
+        <label asp-for="ProductPrice"></label>
+        <input asp-for="ProductPrice" readonly/>
+        <span asp-validation-for="ProductPrice"></span>
+    </div>
+    
+    <a asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
+    <a asp-action="Index">Show All</a>
+    
+    
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+                    var output = document.getElementById('ProductImagePreview');
+                    output.src = $("#ProductImage").val();
+                })
+        
+                $("#ProductImage").on("change", function () {
+                    var output = document.getElementById('ProductImagePreview');
+                    output.src = $(this).val();
+                })
+    </script>
+}

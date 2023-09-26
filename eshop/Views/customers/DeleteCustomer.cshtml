@@ -1,0 +1,57 @@
+@model Customers
+
+@{
+    ViewData["Title"] = "Delete customer";
+}
+
+<h1>Delete confirmation </h1>
+
+<div>
+   
+    
+        <div>
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" readonly/>
+            <span asp-validation-for="FirstName"></span>
+        </div>
+    
+        <div>
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" readonly/>
+            <span asp-validation-for="LastName"></span>
+        </div>
+    
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" readonly/>
+            <span asp-validation-for="Email"></span>
+        </div>
+    
+        <div>
+            <label asp-for="Address"></label>
+            <input asp-for="Address" readonly/>
+            <span asp-validation-for="Address"></span>
+        </div>
+        
+    
+        <div>
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" readonly/>
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
+    
+    <div>
+        <label asp-for="Birthday"></label>
+        <input asp-for="Birthday" readonly/>
+        <span asp-validation-for="Birthday"></span>
+    </div>
+    
+    <form asp-action="DeleteCustomer">
+        <input type="hidden" asp-for="CustomerId">
+        <input type="submit" value="Confirm"/>
+    </form>
+    <a asp-action="EditCustomer" asp-route-id="@Model.CustomerId">Edit</a>
+    <a asp-action="Index">Show All</a>
+    
+    
+</div>
