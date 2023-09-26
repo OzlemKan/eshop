@@ -1,7 +1,30 @@
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
+using eshop.Data;
+using eshop.Data.Services;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .Build() ?? throw new ArgumentNullException("new ConfigurationBuilder()\n    .SetBasePath(builder.Environment.ContentRootPath)\n    .AddJsonFile(\"appsettings.json\", optional: false, reloadOnChange: true)\n    .Build()");
+
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
+
+builder.Services.AddScoped<ICustomersService, CustomersService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+    
 
 var app = builder.Build();
 
@@ -24,5 +47,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+AppDbInitializer.Seed(app);
 
+app.Run();
