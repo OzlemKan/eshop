@@ -28,7 +28,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
 
         if (shoppingCartItem == null) // check if shopping cart is empty
         {
-            ShoppingCartItem = new ShoppingCartItem()
+            shoppingCartItem = new ShoppingCartItem()
             {
                 ShoppingCartId = ShoppingCartId,
                 Products = products,
@@ -40,6 +40,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
         {
             shoppingCartItem.Amount++;
         }
+
 
         _context.SaveChanges();
 
