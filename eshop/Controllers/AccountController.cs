@@ -5,9 +5,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eshop.Data.Services;
+using eshop.Data.Static;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eshop.Controllers;
 
+[Authorize (Roles = UserRoles.Admin)]
 public class AccountController : Controller
 {
 
@@ -31,11 +34,16 @@ public class AccountController : Controller
         var users = await _context.Users.ToListAsync();
         return View(users);
     }
+    
+    [AllowAnonymous]
     public IActionResult Login() => View(new LoginVM
     {
         Email = null,
         Password = null
     });
+
+    
+    [AllowAnonymous]
 
     [HttpPost]
     public async Task<IActionResult> Login(LoginVM loginVM)
@@ -63,7 +71,8 @@ public class AccountController : Controller
         return View(loginVM);
 
     }
-
+    
+    [AllowAnonymous]
     public IActionResult Register() => View(RegisterVM);
 
     [HttpPost]
@@ -105,7 +114,9 @@ public class AccountController : Controller
         }
         return View("RegisterCompleted");
     }
-
+    
+    
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Logout()
     {
@@ -169,6 +180,12 @@ public class AccountController : Controller
         var customerDetails = await _service.GetByIdAsync(id);
 
         return View(customerDetails);
+    }
+
+    [AllowAnonymous]
+    public IActionResult AccessDenied(string returnUrl)
+    {
+        return View();
     }
 }
     
