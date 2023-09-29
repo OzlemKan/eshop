@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using eshop.Data;
+using eshop.Data.Cart;
 using eshop.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
@@ -8,6 +9,8 @@ using Pomelo.EntityFrameworkCore.MySql;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSession();
+
 builder.Services.AddControllersWithViews();
 
 var configuration = new ConfigurationBuilder()
@@ -24,6 +27,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<ICustomersService, CustomersService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
+builder.Services.AddScoped(ShoppingCart.GetShoppingCart);
     
 
 var app = builder.Build();
@@ -40,6 +46,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 
@@ -48,5 +55,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 AppDbInitializer.Seed(app);
-
-eapp.Run();
+ 
+app.Run();

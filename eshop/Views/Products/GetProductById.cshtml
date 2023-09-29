@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details of the product";
 }
 
-<h1>Product Details</h1>
+<h1>Product details</h1>
 
 <div>
     <div>
@@ -39,9 +39,6 @@
         <input asp-for="ProductDescription" readonly/>
         <span asp-validation-for="ProductDescription"></span>
     </div>
-        
-    
-  
     
     <div>
         <label asp-for="ProductPrice"></label>
@@ -52,6 +49,15 @@
     <a asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
     <a asp-action="Index">Show All</a>
     
+    <div class="col-md-12">
+        <div class="card-footer">
+            <p class="card-text">
+                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id ="@Model.ProductId"> 
+                    <i class="bi bi-bag-plus-fill">Add to my cart (Price @Model.ProductPrice.ToString("c"))</i>
+                </a>  
+            </p>
+        </div>
+    </div>
     
 </div>
 

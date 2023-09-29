@@ -33,7 +33,6 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Orders\" />
 
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.5" />

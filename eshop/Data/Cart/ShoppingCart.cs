@@ -16,6 +16,19 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
         _context = context;
     }
     
+
+    // to get the session and to check  the service and check if we already have a service with that cart id, otherwise generate a new id and  set that id to new session
+    public static ShoppingCart GetShoppingCart(IServiceProvider services)
+    {
+        ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+        var context = services.GetService<AppDbContext>();
+        // ?? mean "if this is null"
+        string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+        session.SetString("CartId", cartId);
+
+        return new ShoppingCart(context) { ShoppingCartId = cartId };
+    }
+    
 //ADD   
     // add to the shopping cart
 
@@ -65,7 +78,6 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
         _context.SaveChanges();
         
     }
-    
 
 // get all the shopping cart items 
 
@@ -83,7 +95,8 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
         .Where(n => n.ShoppingCartId == ShoppingCartId)
         .Select(n => n.Products.ProductPrice * n.Amount)
         .Sum();
-        
-    }
+
+    
+}
 
 // quand on fait n => n. cela veut dire : for each item
