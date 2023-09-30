@@ -5,61 +5,172 @@
     ViewData["Title"] = "List of Products";
 }
 
-<!DOCTYPE html>
-<html lang="">
+
 <head>
+    <link rel="stylesheet" href="./css/productlist.css">
     <title>List of products</title>
 </head>
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <a class="btn btn-outline-secondary" asp-action="AddProduct">Add a new Product</a>
-}
+
+
+<partial name="_navbar"/>
+
+<div class="container-fluid">
+     <div class="row">
+   
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Example headline.</h1>
+                            <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Another example headline.</h1>
+                            <p>Some representative placeholder content for the second slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>One more for good measure.</h1>
+                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
 
 
-<body>
-    <h1>List of products</h1>
-    <div>
-        <table class="table">
-            <thead>
-                <tr class="text-center">
-                    <th>Image</th>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Delivery</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr class="col-md-8 offset-md-2">
-                        <td class="align-middle">
-                            <img  src="@item.ProductImage" alt="" style="width:150px">
+<div class="container d-flex justify-content-center mt-100">
+    <div class="row"> <div class="col-md-3"> 
+            <div class="product-wrapper mb-45 text-center">
+                <div class="product-img"> 
+                    <a href="#" data-abc="true"> <img src="https://i.imgur.com/tL7ZE46.jpg" alt=""> </a>
+                    <span class="text-center"><i class="fa fa-rupee"></i> 43,000</span> 
+                    <div class="product-action">
+                        <div class="product-action-style"> 
+                            <a href="#"> <i class="fa fa-plus"></i> </a> 
+                            <a href="#"> <i class="fa fa-heart"></i> </a> <a href="#"> 
+                                <i class="fa fa-shopping-cart"></i> </a> 
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="product-wrapper mb-45 text-center">
+                <div class="product-img">
+                    <a href="#" data-abc="true">
+                        <img src="https://i.imgur.com/lAQxXCK.jpg" alt=""> </a>
+                    <span><i class="fa fa-rupee"></i> 41,000</span>
+                    <div class="product-action">
+                        <div class="product-action-style">
+                            <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a>
+                            <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a>
+                            <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="product-wrapper mb-45 text-center">
+                <div class="product-img"> <a href="#" data-abc="true"> <img src="https://i.imgur.com/HxEEu5g.jpg" alt=""> </a>
+                    <span><i class="fa fa-rupee"></i> 33,000</span>
+                    <div class="product-action">
+                        <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a>
+                            <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a>
+                            <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i></a>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>	
+        <div class="col-md-3">
+            <div class="product-wrapper mb-45 text-center">
+                <div class="product-img"> <a href="#" data-abc="true"> <img src="https://i.imgur.com/lAQxXCK.jpg" alt=""> </a>	
+                    <span><i class="fa fa-rupee"></i> 23,000</span> 
+                    <div class="product-action">
+                        <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> 
+                                <i class="fa fa-plus"></i> </a> 
+                            <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> 
+                            <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>	
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr class="text-center">
+            <th>Image</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Delivery</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="col-md-8 offset-md-2">
+                <td class="align-middle">
+                    <img  src="@item.ProductImage" alt="" style="width:150px">
                            
-                        </td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductId)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductName)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductPrice)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductCategory)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDelivery)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDescription)</td>
-                        <td class="align-middle">
-                            <a class="btn btn-outline-secondary" asp-action="GetProductById" asp-route-id="@item.ProductId">View</a>
-                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                            {
-                                <a class="btn btn-outline-secondary" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a>
-                                <a class="btn btn-outline-secondary" asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
-                            }
+                </td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductId)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductName)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductPrice)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductCategory)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDelivery)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDescription)</td>
+                <td class="align-middle">
+                    <a class="btn btn-outline-secondary" asp-action="GetProductById" asp-route-id="@item.ProductId">View</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-outline-secondary" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a>
+                        <a class="btn btn-outline-secondary" asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
+                    }
                             
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div></div></div>
+
+
+
