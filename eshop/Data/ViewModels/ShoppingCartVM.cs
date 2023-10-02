@@ -4,13 +4,13 @@ namespace eshop.Data.ViewModels;
 
 public class ShoppingCartVm
 {
-    public ShoppingCartVm(ShoppingCart shoppingCart)
+    public ShoppingCartVm(ShoppingCart? shoppingCart)
     {
         ShoppingCart = shoppingCart;
     }
     
 
-    public ShoppingCart ShoppingCart { get; set; }
+    public ShoppingCart? ShoppingCart { get; set; }
     public decimal ShoppingCartTotal { get; set; }
     
     

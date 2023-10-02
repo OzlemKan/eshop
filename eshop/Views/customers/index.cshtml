@@ -40,9 +40,9 @@
             <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
             <td>@Html.DisplayFor(modelItem => item.Birthday)</td>
             <td>
-                <a asp-action="GetCustomerById" asp-route-id="@item.CustomerId">View</a>
-                <a asp-action="EditCustomer" asp-route-id="@item.CustomerId">Edit</a>
-                <a asp-action="DeleteCustomer" asp-route-id="@item.CustomerId">Delete</a>
+                <a class="btn btn-light" style="background-color: #A48374" style="color: #EBE3DB" asp-action="GetCustomerById" asp-route-id="@item.CustomerId">View</a>
+                <a class="btn btn-light" style="background-color: #A48374" style="color: #EBE3DB" asp-action="EditCustomer" asp-route-id="@item.CustomerId">Edit</a>
+                <a class="btn btn-light" style="background-color: #A48374" style="color: #EBE3DB" asp-action="DeleteCustomer" asp-route-id="@item.CustomerId">Delete</a>
             </td>
         </tr>
     }

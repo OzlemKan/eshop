@@ -37,7 +37,9 @@ public class OrdersController : Controller
     public async Task<IActionResult> AddToShoppingCart(int id) // int id = item id
     {
         var item = await _productService.GetByIdAsync(id);
+
         _shoppingCart.AddItemToCart(item);
+
         return RedirectToAction(nameof(ShoppingCart));
     }
     

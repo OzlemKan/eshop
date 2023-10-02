@@ -43,4 +43,11 @@
     <Folder Include="Data\Static\" />
 
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Image\bag-dash-fill.svg" />
+    <None Include="wwwroot\Image\bag-plus-fill.svg" />
+    <None Include="wwwroot\Image\cart-fill.svg" />
+    <None Include="wwwroot\Image\cart3.svg" />
+    <None Include="wwwroot\Image\logo.png" />
+  </ItemGroup>
 </Project>

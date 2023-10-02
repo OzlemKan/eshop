@@ -81,7 +81,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
 
 // get all the shopping cart items 
 
-    public List<ShoppingCartItem> GetShoppingCartItems(string shoppingCartId)
+    public List<ShoppingCartItem> GetShoppingCartItems(string? shoppingCartId)
     {
         
         return _context.ShoppingCartItems
