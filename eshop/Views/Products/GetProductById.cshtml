@@ -46,14 +46,14 @@
         <span asp-validation-for="ProductPrice"></span>
     </div>
     
-    <a asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
-    <a asp-action="Index">Show All</a>
+    <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
+    <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="Index">Show All</a>
     
     <div class="col-md-12">
         <div class="card-footer">
             <p class="card-text">
-                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
-                    <img src="Image/bag-plus-fill.svg"/>
+                <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
+                    <img src="Image/bag-plus-fill.svg" alt="add to my cart"/>
                     <i>Add to my cart (Price @Model.ProductPrice.ToString("c"))</i>
                 </a>  
             </p>

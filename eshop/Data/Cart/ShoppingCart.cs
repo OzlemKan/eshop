@@ -37,7 +37,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
         // otherwise, add the new product to the shopping cart and set the amount to 1
     {
         var shoppingCartItem = _context.ShoppingCartItems // create a var to check if shopping cart is empty
-            .FirstOrDefault(n => n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
+            .FirstOrDefault(n => n.Products != null && n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem == null)  // if we dont have this product in our cart, we are going to create a new shoppingCartItem
         {
@@ -91,7 +91,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     }
 //  get the  shopping cart total 
 
-    public decimal GetShoppingCartTotal()  => _context.ShoppingCartItems
+    public double GetShoppingCartTotal()  => (double)_context.ShoppingCartItems
         .Where(n => n.ShoppingCartId == ShoppingCartId)
         .Select(n => n.Products.ProductPrice * n.Amount)
         .Sum();

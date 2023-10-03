@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="text-center"></div>
-        <h1>Your basket</h1>
+        <h2>Your basket</h2>
     </div>
     
     <table class="table">
@@ -20,43 +20,35 @@
             <th>Products</th>
             <th>Price</th>
             <th>Subtotal</th>
-            <th> </th>
+            <th></th>
         </tr>
         </thead> 
         <tbody>
-        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+        @foreach (var item in Model.ShoppingCart!.ShoppingCartItems)
         {
             <tr>
                 <td class="align-middle">@item.Amount</td>
+                <td class="align-middle">@item.Products!.ProductName</td>
+                <td class="align-middle">@item.Products.ProductPrice.ToString("C")</td>
+                <td class="align-middle">@((item.Amount*item.Products.ProductPrice).ToString("C"))</td>
                 <td class="align-middle">
-                    @if (item.Products != null)
-                    {
-                        @item.Products.ProductName@:</td>
-                        <td class="align-middle">@item.Products.ProductPrice.ToString("C")</td>
-                        <td class="align-middle">@((item.Amount * item.Products.ProductPrice).ToString("C"))</td>
-                        @:<td class="align-middle">
-                        <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Products.ProductId">
-                            <img src="Image/bag-dash-fill.svg" alt="Remove from cart"/>
-                        </a>
-                        <a class="text-success" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Products.ProductId">
-                            <img src="Image/bag-plus-fill.svg" alt="Add to cart"/>
-                        </a>
-                    }
- 
-
+                    <a  asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Products.ProductId">
+                        <img src="Image/bag-dash-fill.svg" alt="Remove from cart"/>
+                    </a>
+                    <a  asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Products.ProductId">
+                        <img src="Image/bag-plus-fill.svg" alt="Add to cart"/>
+                    </a>
                 </td>
             </tr> 
         }
-        </tbody>
+        </tbody>    
         <tfoot>
-        <tr>
-            <td colspan="2"></td>
-            <td><b>Total</b></td>
-            <td>
-                @Model.ShoppingCartTotal.ToString("C")
-            </td>
-            <td> </td>
-        </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td><b>Total</b></td>
+                <td>@Model.ShoppingCartTotal.ToString("C")</td>
+                <td></td>
+            </tr>
         </tfoot>
     </table>
     <div class="text-center">
