@@ -81,13 +81,11 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
 
 // get all the shopping cart items 
 
-    public List<ShoppingCartItem> GetShoppingCartItems(string? shoppingCartId)
+    public List<ShoppingCartItem> GetShoppingCartItems()
     {
         
-        return _context.ShoppingCartItems
-            .Where(item => item.ShoppingCartId == shoppingCartId)
-            .Include(item => item.Products) 
-            .ToList();
+        return ShoppingCartItems ??= _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Include(n =>n.Products).ToList();
+          
     }
 //  get the  shopping cart total 
 

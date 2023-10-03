@@ -21,16 +21,16 @@ public class OrdersController : Controller
 
     public IActionResult ShoppingCart() 
     {
-        var items = _shoppingCart.GetShoppingCartItems(null);  // use this to get a list of all the shoppingCartItems
+        var items = _shoppingCart.GetShoppingCartItems();
         _shoppingCart.ShoppingCartItems = items;
-        
- 
-        var response = new ShoppingCartVm(null)
+
+        var response = new ShoppingCartVm()
         {
             ShoppingCart = _shoppingCart,
             ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-            
         };
+
+        return View(response);
         return View(response); 
     }
 
