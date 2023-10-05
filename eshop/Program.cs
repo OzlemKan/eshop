@@ -25,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
-builder.Services.AddScoped<ICustomersService, CustomersService>();
+
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 
@@ -57,6 +57,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-AppDbInitializer.Seed(app);
+
  
 app.Run();

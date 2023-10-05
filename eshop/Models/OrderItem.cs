@@ -16,7 +16,7 @@ public class OrderItem
     public int ProductId { get; set; }
     [ForeignKey("ProductId")]
 
-    public Products? Products { get; set; } // relira direct au model product
+    public int Products { get; set; } // relira direct au model product
     
     public int OrderId { get; set; }
     [ForeignKey("OrderId")]
