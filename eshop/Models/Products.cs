@@ -7,6 +7,7 @@ namespace eshop.Models;
 public class Products
 {
     [Key]
+
     public  required int ProductId { get; set; }
     
     [Display(Name = "Name")]
