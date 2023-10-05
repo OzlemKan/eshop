@@ -42,7 +42,7 @@ public class OrdersService : IOrdersService
          var orderItem = new OrderItem()
          {
             Amount = item.Amount,
-            Products = item.Products.ProductId,
+            Products = item.Products,
             OrderId = order.OrderId,
             Price = item.Products.ProductPrice
          };
