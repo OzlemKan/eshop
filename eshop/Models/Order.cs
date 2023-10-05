@@ -11,7 +11,7 @@ public class Order
 
     public string? UserId { get; set; }
 
-    public List<OrderItem>? OrderItems { get; set; }
+    public List<OrderItem>? OrderItem { get; set; }
     
     [Required]
     public string? OrderName { get; set; }

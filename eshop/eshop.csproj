@@ -50,4 +50,9 @@
     <None Include="wwwroot\Image\cart3.svg" />
     <None Include="wwwroot\Image\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\Desktop\image bijoux\PhiPhiearrings_cf0307b6-e18a-48cf-9169-f1442ed3e5bc_1800x1800.webp">
+      <Link>wwwroot\bijoux\PhiPhiearrings_cf0307b6-e18a-48cf-9169-f1442ed3e5bc_1800x1800.webp</Link>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -4,16 +4,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head style="background-color: #eee4df">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Jewelry eshop</title>
+    <title>@ViewData["Title"] <img src="Image/Logo_Isis.png" /> - Jewelry eshop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/eshop.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
-<body>
+<body style="background-color: #eee4df">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -24,13 +24,19 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @await Component.InvokeAsync(typeof(ShoppingCartSummary))
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">General terms and conditions</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
                 </div>
             </div>
@@ -42,10 +48,23 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container" style="align-content: center">
-            &copy; 2023 - Isis Jewelry - <img src="Image/Logo_Isis.png" alt="Logo Isis" width="200px" height="200px"/> <a asp-area="" asp-controller="Home" asp-action="Privacy">General terms and conditions</a>
-        </div>
+<footer class="border-top footer text-muted ">
+        <div class="container">
+           <ul>
+               <li class="nav-item">
+                   <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+               </li>
+               <li>
+                   <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="Image/Logo_Isis.png" alt="Logo" width="300px" height="300px"></a>
+               </li>
+             <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">General terms and conditions</a>
+             </li>
+           <li class="nav-item">
+               <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+           </li>
+           </ul>
+         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -7,7 +7,7 @@ namespace eshop.Models;
 public class Products
 {
     [Key]
-    public int ProductId { get; set; }
+    public Products? ProductId { get; set; }
     
     [Display(Name = "Name")]
     public required string  ProductName { get; set; } 
@@ -19,7 +19,7 @@ public class Products
     [Required]
     [DataType(DataType.Currency)]
     [Display(Name = "Price")]
-    public decimal ProductPrice { get; set; }
+    public double ProductPrice { get; set; }
     
     [Required]    
     [Display(Name = "Quantity")]

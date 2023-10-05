@@ -20,7 +20,7 @@ public class ProductService : IProductService
 
     public async Task<Products> GetByIdAsync(int id)
     {
-        var result = await _context.Products.FirstOrDefaultAsync(n => n.ProductId == id);
+        var result = await _context.Products.FirstOrDefaultAsync(n => Equals(n.ProductId, id));
         return result;
     }
 
@@ -62,7 +62,7 @@ public class ProductService : IProductService
 
     public async Task DeleteAsync(int id)
     {
-        var result = await _context.Products.FirstOrDefaultAsync(n => n.ProductId == id);
+        var result = await _context.Products.FirstOrDefaultAsync(n => Equals(n.ProductId, id));
         _context.Products.Remove(result);
         await _context.SaveChangesAsync();
     }

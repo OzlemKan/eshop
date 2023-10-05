@@ -5,14 +5,8 @@ namespace eshop.Data.Services;
 
 public interface IOrdersService
 {
-    IEnumerable<Order> GetAll();
+    Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAddress);
 
-    Order GetById(int id);
-
-    void Add(Order customers);
+    Task<List<Order>> GetOrderSByUserIdAsync(string userId);
     
-    Order Update(int id, Order newOrder);
-
-    void Delete(int id);
-
 }

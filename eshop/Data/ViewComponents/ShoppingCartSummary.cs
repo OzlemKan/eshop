@@ -1,3 +1,6 @@
+
+
+
 using eshop.Data.Cart;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -21,3 +24,5 @@ public class ShoppingCartSummary:ViewComponent
     }
 
 }
+
+// petit panier au dessus, pour le summary du panier

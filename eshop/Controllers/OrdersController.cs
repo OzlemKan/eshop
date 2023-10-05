@@ -31,7 +31,7 @@ public class OrdersController : Controller
         };
 
         return View(response);
-        return View(response); 
+        
     }
 
     public async Task<IActionResult> AddToShoppingCart(int id) // int id = item id

@@ -24,19 +24,20 @@
         </tr>
         </thead> 
         <tbody>
-        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+        @foreach (var item in Model.ShoppingCart!.ShoppingCartItems)
         {
             <tr>
                 <td class="align-middle">@item.Amount</td>
-                <td class="align-middle">@item.Products.ProductName</td>
+                <td class="align-middle">@item.Products!.ProductName</td>
                 <td class="align-middle">@item.Products.ProductPrice.ToString("C")</td>
                 <td class="align-middle">@((item.Amount*item.Products.ProductPrice).ToString("C"))</td>
                 <td class="align-middle">
                     <a  asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Products.ProductId">
-                        <img src="Image/bag-dash-fill.svg" alt="Remove from cart"/>
+                        
+                         <i class="bi bi-bag-dash-fill"></i>
                     </a>
                     <a  asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Products.ProductId">
-                        <img src="Image/bag-plus-fill.svg" alt="Add to cart"/>
+                        <i class="bi bi-bag-plus-fill"></i>
                     </a>
                 </td>
             </tr> 

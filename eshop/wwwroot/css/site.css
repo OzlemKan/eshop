@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+footer.ul  {
+  display: flex;
+  flex-direction: row;
+}

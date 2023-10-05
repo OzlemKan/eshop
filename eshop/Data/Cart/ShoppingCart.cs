@@ -1,4 +1,4 @@
-using System.Collections;
+
 using eshop.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,8 +53,6 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
         {
             shoppingCartItem.Amount++;
         }
-
-
         _context.SaveChanges();
 
     }
@@ -62,7 +60,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     public void RemoveItemFromCard(Products products)
     {
         var shoppingCartItem = _context.ShoppingCartItems // check if we have this product in the shopping bag
-            .FirstOrDefault(n => n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
+            .FirstOrDefault(n => n.Products != null && n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem != null) // check if shopping cart is empty, if we have a shopping cart in the db
         {
@@ -84,17 +82,15 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     public List<ShoppingCartItem> GetShoppingCartItems()
     {
         
-        return ShoppingCartItems ??= _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Include(n =>n.Products).ToList();
+        return ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Include(n =>n.Products).ToList();
           
     }
 //  get the  shopping cart total 
 
     public double GetShoppingCartTotal()  => (double)_context.ShoppingCartItems
         .Where(n => n.ShoppingCartId == ShoppingCartId)
-        .Select(n => n.Products.ProductPrice * n.Amount)
+        .Select(n => n.Products!.ProductPrice * n.Amount)
         .Sum();
-
-    
 }
 
 // quand on fait n => n. cela veut dire : for each item
