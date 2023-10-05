@@ -11,7 +11,7 @@ namespace eshop.Data
         }
         
 
-        public DbSet<Customers> Customers { get; set; }
+        
         public DbSet<Products> Products { get; set; }
         
         //Orders related tables
@@ -19,7 +19,8 @@ namespace eshop.Data
         
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; } 
-
+        
+      
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
