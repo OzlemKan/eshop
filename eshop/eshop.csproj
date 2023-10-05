@@ -55,4 +55,11 @@
       <Link>wwwroot\bijoux\PhiPhiearrings_cf0307b6-e18a-48cf-9169-f1442ed3e5bc_1800x1800.webp</Link>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\customers\DeleteCustomer.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\customers\EditCustomer.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\customers\GetCustomerById.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\customers\index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\customers\register.cshtml" />
+  </ItemGroup>
 </Project>
