@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-﻿@using eshop.Data.ViewComponents
+@using eshop.Data.ViewComponents
 @using eshop.Data.Cart;
 @using Microsoft.AspNetCore.Mvc;
 
-=======
-﻿@using eshop.Views.Shared
->>>>>>> ozlem
 <!DOCTYPE html>
 <html lang="en">
 <head style="background-color: #eee4df">
@@ -13,17 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] <img src="Image/Logo_Isis.png" /> - Jewelry eshop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/eshop.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/carousel.css">
-    <link rel="stylesheet" href="./css/navbars.css">
-    <link rel="stylesheet" href="css/login.css">
-     
-  
-
-   
 </head>
-<<<<<<< HEAD
 <body style="background-color: #eee4df">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -77,29 +66,11 @@
            </ul>
          </div>
     </footer>
-=======
-<body>
-<header>
-
-</header>
-
-
-<main>
-        @RenderBody()
-    </main>
-
-
-</body>
-
-   
->>>>>>> ozlem
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-
-
+</body>
 </html>
 
 

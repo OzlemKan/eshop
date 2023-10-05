@@ -1,13 +1,10 @@
 using eshop.Data;
 using eshop.Data.Services;
-using eshop.Data.Static;
 using Microsoft.AspNetCore.Mvc;
 using eshop.Models;
-using Microsoft.AspNetCore.Authorization;
-
 namespace eshop.Controllers;
 
-[Authorize (Roles = UserRoles.Admin)]
+
 public class ProductsController : Controller
 {
     
@@ -18,7 +15,6 @@ public class ProductsController : Controller
         _service = service;
     }
 
-    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var allProducts = await _service.GetAllAsync();
@@ -96,7 +92,7 @@ public class ProductsController : Controller
         return View(product);
     }
 
-    [AllowAnonymous]
+    
     public async Task<IActionResult> GetProductById(int id)
     {
         var productDetails = await _service.GetByIdAsync(id);
