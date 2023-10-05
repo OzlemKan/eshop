@@ -21,5 +21,8 @@ public class ApplicationUser: IdentityUser
     [Display (Name = "Phone Number")]
     public new string PhoneNumber { get; set; }
 
-    public DateOnly Birthday { get; set; }
+    public DateTime Birthday { get; set; }
 }
+
+
+
