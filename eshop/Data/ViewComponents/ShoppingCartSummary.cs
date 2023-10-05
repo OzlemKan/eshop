@@ -19,8 +19,8 @@ public class ShoppingCartSummary:ViewComponent
     public IViewComponentResult Invoke()
     {
         var items = _shoppingCart.GetShoppingCartItems();
-
-        return View(items.Count);
+        
+        return View(items.Sum(item => item.Amount));
     }
 
 }

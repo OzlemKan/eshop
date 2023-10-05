@@ -10,8 +10,6 @@ namespace eshop.Data
         {
         }
         
-
-        
         public DbSet<Products> Products { get; set; }
         
         //Orders related tables

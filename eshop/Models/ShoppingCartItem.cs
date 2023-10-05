@@ -10,7 +10,6 @@ public class ShoppingCartItem
     [Key]
     public int ShoppingCartItemId { get; set; }
     
-   
     public Products Products { get; set; }
 
     public int Amount { get; set; }
