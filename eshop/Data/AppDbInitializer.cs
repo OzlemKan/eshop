@@ -13,46 +13,20 @@ namespace eshop.Data;
 
 public class AppDbInitializer
 {
-    public static void Seed(IApplicationBuilder applicationBuilder)
-    {
-        using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
-        var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
-        context.Database.Migrate();
-
-        if (!context.Customers.Any())
-        {
-            context.Customers.AddRange(new List<Customers>()
-            {
-                new Customers()
-                {
-                    FirstName = "Julie",
-                    LastName = "Dubois",
-                    Address = "rue Neuve 23, 1000 Bruxelles",
-                    Email = "julie@gmail.com",
-                    PhoneNumber = "045687654",
-                    Birthday = Convert.ToDateTime("1990-03-23")
-                }
-
-            });
-
-            context.SaveChanges();
-        }
-    }
-    
     public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
     {
         using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
         {
-            
+
             var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
                 await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-        
+
             if (!await roleManager.RoleExistsAsync(UserRoles.User))
                 await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
-            
+
             var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             string adminUserEmail = "ozlemm-03@hotmail.com";
             var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
@@ -73,8 +47,8 @@ public class AppDbInitializer
                 await userManager.CreateAsync(newAdminUser, "Coding@1234?");
                 await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
             }
-            
-           
+
+
             const string appUserEmail = "ozlemphotos2309@gmail.com";
             var appUser = await userManager.FindByEmailAsync(appUserEmail);
             if (appUser == null)
@@ -92,7 +66,7 @@ public class AppDbInitializer
 
                 };
                 var createAppUserResult = await userManager.CreateAsync(newAppUser, "Coding@1234?");
-        
+
                 if (createAppUserResult.Succeeded)
                 {
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
@@ -105,8 +79,8 @@ public class AppDbInitializer
                 }
             }
         }
-        
-        
-    }
 
+
+    }
 }
+

@@ -4,6 +4,8 @@
     ViewData["Title"] = "Sign up for a new account";
 }
 
+<partial name="_navbar"/>
+
 <!-- Section: Design Block -->
 <section class="text-center">
   <!-- Background image -->
@@ -76,8 +78,8 @@
                           </div>
                           <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                              <label asp-for="Birthday" class="form-label" for="form3Example2">Phone Number</label>
-                              <input asp-for="Birthday" type="text" id="form3Example2" class="form-control" />
+                              <label asp-for="Birthday" class="form-label" for="form3Example2">Birthday</label>
+                              <input asp-for="Birthday" type="date" id="form3Example2" class="form-control" />
                               
                             </div>
                           </div>

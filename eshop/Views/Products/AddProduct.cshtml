@@ -6,69 +6,126 @@
     ViewData["Title"] = "Add a new product";
 }
 
-<h1>Add a new product</h1>
 
-<div>
-    <form asp-action="AddProduct">
-        <div asp-validation-summary="ModelOnly"></div>
-        <div>
-              <img id="ProductImagePreview"  style="max-width: 200px; max-height: 200px;" alt="" src=""/>
-        </div>
-        
 
-        <div>
-            <label asp-for="ProductImage"></label>
-            <input asp-for="ProductImage"/>
-            <span asp-validation-for="ProductImage"></span>
-        </div>
-        <div>
-            <label asp-for="ProductName"></label>
-            <input asp-for="ProductName"/>
-            <span asp-validation-for="ProductName"></span>
-        </div>
-    
-        <div>
-            <label asp-for="ProductCategory"></label>
-            <select asp-for="ProductCategory" asp-items="Html.GetEnumSelectList<ProductCategory>()"></select>
-            <span asp-validation-for="ProductCategory"></span>
-        </div>
-        
-        <div>
-                    <label asp-for="ProductPrice"></label>
-                    <input asp-for="ProductPrice"/>
-                    <span asp-validation-for="ProductPrice"></span>
+<partial name="_navbar"/>
+
+<!-- Section: Design Block -->
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+        background-image: url('https://images.pexels.com/photos/4735888/pexels-photo-4735888.jpeg');
+        height: 300px;
+        "></div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Add a new product</h2>
+            @if (TempData["Error"] != null)
+                    {
+                        <div class="col-md-12 alert alert-danger">
+                            <span><b>Sorry!</b> @TempData["Error"] </span>
+            
+                        </div>
+                    }
+
+            <form asp-action="AddProduct">
+              <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
+            
+              <div class="col mb-4">
+                <div>
+                  <img id="ProductImagePreview"  style="max-width: 200px; max-height: 200px;" alt="" src=""/>
                 </div>
-    
-        <div>
-            <label asp-for="ProductDelivery"></label>
-            <input asp-for="ProductDelivery"/>
-            <span asp-validation-for="ProductDelivery"></span>
-        </div>
-        
-        <div>
-            <label asp-for="ProductDescription"></label>
-            <input asp-for="ProductDescription"/>
-            <span asp-validation-for="ProductDescription"></span>
-        </div>
+                
 
-        <div>
-            <input type="submit" value="Add product"/>
+                <div class="form-outline">
+                  <label asp-for="ProductImage" class="form-label" for="form3Example1">Product Image</label>
+                  <input asp-for="ProductImage" type="text" class="form-control"/>
+
+                </div>
+              </div>
+           
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label asp-for="ProductName" class="form-label" for="form3Example2">Product Name</label>
+                    <input asp-for="ProductName" type="text" id="form3Example5" class="form-control" />
+                  
+                  </div>
+                </div>
+            
+
+            
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label asp-for="ProductCategory" class="form-label" for="form3Example3">Product Category</label>
+                    <select asp-for="ProductCategory" asp-items="Html.GetEnumSelectList<ProductCategory>()" id="form3Example3" class="form-control"></select>
+
+                  </div>
+                </div>
+            
+                <div class="form-outline mb-4">
+                
+                  <label asp-for="ProductDescription" class="form-label" for="form3Example2">Description</label>
+                  <textarea asp-for="ProductDescription" type="text" id="form3Example4" class="form-control"></textarea>
+                    
+                
+                </div>
+            
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label asp-for="ProductPrice" class="form-label" for="form3Example1">Price</label>
+                      <input asp-for="ProductPrice" type="text" id="form3Example6" class="form-control" />
+                             
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label asp-for="ProductDelivery" class="form-label" for="form3Example2">Delivery</label>
+                      <input asp-for="ProductDelivery" type="text" id="form3Example2" class="form-control" />
+                              
+                    </div>
+                  </div>
+                </div>
+                        
+            
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  Add product
+                </button></div>
+
+            </form>
+            
         </div>
-    </form>
-</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
 
 @section Scripts
 {
     <script>
         $(document).ready(function () {
-                    var output = document.getElementById('ProductImagePreview');
+                    let output = document.getElementById('ProductImagePreview');
                     output.src = $("#ProductImage").val();
                 })
         
                 $("#ProductImage").on("change", function () {
-                    var output = document.getElementById('ProductImagePreview');
+                    let output = document.getElementById('ProductImagePreview');
                     output.src = $(this).val();
                 })
     </script>
 }
+
 
