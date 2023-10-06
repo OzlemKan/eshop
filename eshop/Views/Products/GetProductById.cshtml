@@ -5,12 +5,6 @@
     ViewData["Title"] = "Details of the product";
 }
 
-<<<<<<< HEAD
-<h1>Product details</h1>
-=======
-<partial name="_navbar"/>
->>>>>>> ozlem
-
 <!-- Section: Design Block -->
 <section class="text-center">
   <!-- Background image -->
@@ -115,52 +109,24 @@
   </div>
   @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
       {
-          <a asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
+          <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
       }
+      <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="Index">Show All</a>
+      
+      <div class="col-md-12">
+          <div class="card-footer">
+              <p class="card-text">
+                  <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
+                      <i class="bi bi-bag-plus-fill"> Add one to my cart for @Model.ProductPrice.ToString("c")</i>
+                  </a>  
+              </p>
+          </div>
+      </div>
      
-      <a asp-action="Index">Show All</a></div>
+  <a asp-action="Index">Show All</a></div>
 </section>
 <!-- Section: Design Block -->
 
-
-    
-<<<<<<< HEAD
-    <div>
-        <label asp-for="ProductCategory"></label>
-        <input asp-for="ProductCategory" readonly/>
-        <span asp-validation-for="ProductCategory"></span>
-    </div>
-    
-    <div>
-        <label asp-for="ProductDelivery"></label>
-        <input asp-for="ProductDelivery" readonly/>
-        <span asp-validation-for="ProductDelivery"></span>
-    </div>
-    
-    <div>
-        <label asp-for="ProductDescription"></label>
-        <input asp-for="ProductDescription" readonly/>
-        <span asp-validation-for="ProductDescription"></span>
-    </div>
-    
-    <div>
-        <label asp-for="ProductPrice"></label>
-        <input asp-for="ProductPrice" readonly/>
-        <span asp-validation-for="ProductPrice"></span>
-    </div>
-    
-    <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
-    <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="Index">Show All</a>
-    
-    <div class="col-md-12">
-        <div class="card-footer">
-            <p class="card-text">
-                <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
-                    <i class="bi bi-bag-plus-fill"> Add one to my cart for @Model.ProductPrice.ToString("c")</i>
-                </a>  
-            </p>
-        </div>
-    </div>
 
 @section Scripts
 {
