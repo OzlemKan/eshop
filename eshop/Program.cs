@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Session;
+
 
 namespace eshop;
 
@@ -29,7 +31,8 @@ internal class Program
 
 
 
-        
+        builder.Services.AddScoped<eshop.Data.Cart.ShoppingCart>();
+
 // APPDBCONTEXT
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
@@ -39,16 +42,17 @@ internal class Program
 
         builder.Services.AddScoped<IAccountService, AccountService>();
         builder.Services.AddScoped<IProductService, ProductService>();
+        builder.Services.AddScoped<IOrdersService, OrdersService>();
 
 //authorization and authentication
 
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
         builder.Services.AddMemoryCache();
-        
+
 
         var app = builder.Build();
-        
+
 // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
@@ -61,10 +65,11 @@ internal class Program
         app.UseStaticFiles();
 
 
-app.UseRouting();
-app.UseSession();
+
 
         app.UseRouting();
+
+
 
 
 //authorisation
@@ -73,13 +78,9 @@ app.UseSession();
         app.UseAuthorization();
 
 
-
- 
-app.Run();
-
         app.MapPost("/Account/Login",
-            [AllowAnonymous]
-            async (LoginVM loginVM, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager) =>
+            [AllowAnonymous] async (LoginVM loginVM,
+                Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager) =>
             {
                 var user = await userManager.FindByEmailAsync(loginVM.Email);
                 if (user != null)
@@ -134,11 +135,25 @@ app.Run();
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
+                name: "products",
+                pattern: "products",
+                defaults: new { controller = "Products", action = "Index" }
+            );
+
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}"
+            );
+        });
+
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+
+
+            app.Run();
         
-        AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
-
-
-        app.Run();
     }
 }
 

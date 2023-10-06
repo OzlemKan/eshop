@@ -1,4 +1,5 @@
 @using eshop.Data.Static
+@using EasyNet.Identity.EntityFrameworkCore.UI.Areas.Identity.Pages.Shared
 @model IEnumerable<Products>
 
 @{
@@ -6,125 +7,54 @@
 }
 
 
+
 <head>
-
-    <title>All the jewels</title>
-
-
-<a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="AddProduct">Add a new Product</a>
-
     <link rel="stylesheet" href="./css/productlist.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <title>List of products</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 </head>
 
+<partial name="_carousel"/>
 
+<div class="container d-flex justify-content-center mt-100">
+    
+    <div class="row">
 
-<partial name="_navbar"/>
+        @foreach (var item in Model)
+        {
 
-<div class="container-fluid">
-<div class="row">
-    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active justify-content-center">
-                <img src="https://images.pexels.com/photos/10117812/pexels-photo-10117812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt="" s/>
-                <div class="container">
-                    <div class="carousel-caption text-start">
-                        <h1>Our Earrings Collection</h1>
-                        <p class="opacity-75">OUR EARRINGS GO FROM HOOPS AND HUGGIES, TO CLASSIC STUDS AND MANY OTHER UNIQUE DESIGNS THAT WILL MAKE YOU FEEL AMAZED. EITHER YOU PREFER GOLD OR SILVER, BIG OR SMALL, WE HAVE THEM ALL.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Shop Earrings</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2788&q=80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt="" s/>
-                                <div class="container">
-                    <div class="carousel-caption text-start text-dark">
-                        <h1>Our Necklace Collection</h1>
-                        <p>CHOOSE FROM A WIDE VARIETY OF AFFORDABLE GOLD AND SILVER NECKLACES: CHAINS, CHOKERS, PENDANTS AND SNAKE NECKLACES.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Shop Necklaces</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1542596154-2ec6f34368fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt="" s/>
-                <div class="container">
-                    <div class="carousel-caption text-start">
-                        <h1>Our Bracelet Collection</h1>
-                        <p>YOU WILL NEVER HAVE TO WORRY ABOUT YOUR BRACELETS LOSING THEIR COLOR EVER AGAIN. FIND HERE AFFORDABLE BRACELETS FOR YOUR EVERYDAY STYLE: THIN, CHUNKY, BANGLE, CHAIN AND SNAKE BRACELETS.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Shop Bracelets</a></p>
-                    </div>
-                </div>
-            </div>
-             <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1481980235850-66e47651e431?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2788&q=80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt="" s/>
-                                            <div class="container">
-                                <div class="carousel-caption text-end text-dark">
-                                    <h1>Our Ring Collection</h1>
-                                    <p>CHOOSE FROM THIN, THICK, BULKY OR CHUNKY RINGS. USE THEM ALONE OR STACK THEM, WITH OUR GOLD RINGS YOU WILL FEEL LIKE YOU WERE BORN READY.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Shop Rings</a></p>
-                                </div>
+            <div class="col-md-3">
+                <div class="product-wrapper mb-45 text-center">
+                    <div class="product-img">
+                        <a href="#" data-abc="true"> <img src="@item.ProductImage" class="img-fluid" alt=""> </a>
+                        <span class="text-center"><i class="fa fa-rupee"></i> @item.ProductPrice €</span>
+                        <div class="product-action">
+                            <div class="product-action-style">
+                                <a href="#"> <i class="bi bi-eye"></i> </a>
+                                <a href="#"> <i class="bi bi-bookmark-heart"></i> </a>
+                                <a href="#">
+                                    <i class="bi bi-bag-plus"></i> </a>
                             </div>
                         </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
->>>>>>> ozlem
-    </div>
-</div>
-</div>
-     
-
-
-
-            
-<div class="container d-flex justify-content-center mt-100">
-    <div class="row">
-        
-        @foreach (var item in Model)
-                {
-
-        <div class="col-md-3">
-            <div class="product-wrapper mb-45 text-center">
-                <div class="product-img">
-                    <a href="#" data-abc="true"> <img src="@item.ProductImage" class="img-fluid" alt=""> </a>
-                    <span class="text-center"><i class="fa fa-rupee"></i> @item.ProductPrice €</span>
-                    <div class="product-action">
-                        <div class="product-action-style">
-                            <a href="#"> <i class="bi bi-eye"></i> </a>
-                            <a href="#"> <i class="bi bi-bookmark-heart"></i> </a>
-                            <a href="#">
-                                <i class="bi bi-bag-plus"></i> </a>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    
+
 
 
         }
     </div>
-    </div>
+</div>
 
         
         
+
+
+
+
 
