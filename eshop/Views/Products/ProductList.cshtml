@@ -1,0 +1,118 @@
+@using eshop.Data.Static
+@model IEnumerable<Products>
+
+@{
+    ViewData["Title"] = "List of Products";
+}
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>List of products</title>
+</head>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a class="btn btn-outline-secondary" asp-action="AddProduct">Add a new Product</a>
+}
+
+
+
+<body>
+
+<div class="container d-flex justify-content-center mt-100">
+    <div class="row"> <div class="col-md-3"> 
+        <div class="product-wrapper mb-45 text-center">
+             <div class="product-img"> 
+                <a href="#" data-abc="true"> <img src="https://i.imgur.com/tL7ZE46.jpg" alt=""> </a>
+                	<span class="text-center"><i class="fa fa-rupee"></i> 43,000</span> 
+                    <div class="product-action">
+                         <div class="product-action-style"> 
+                            <a href="#"> <i class="fa fa-plus"></i> </a> 
+                            <a href="#"> <i class="fa fa-heart"></i> </a> <a href="#"> 
+                                <i class="fa fa-shopping-cart"></i> </a> 
+                        
+                            </div>
+                             </div>
+                             </div> 
+                            </div>
+                         </div>
+                                 <div class="col-md-3">
+                                     <div class="product-wrapper mb-45 text-center"> 
+                                        <div class="product-img"> 
+                                            <a href="#" data-abc="true"> 
+                                            <img src="https://i.imgur.com/lAQxXCK.jpg" alt=""> </a>	
+                                            <span><i class="fa fa-rupee"></i> 41,000</span> 
+                                            <div class="product-action"> 
+                                                <div class="product-action-style">
+                                                     <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> 
+                                                     <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> 
+                                                     <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> 
+                                                    </div>
+                                                 </div>
+                                                 </div> 
+                                                </div> 
+                                            </div>
+                                            	<div class="col-md-3"> 
+                                                    <div class="product-wrapper mb-45 text-center"> 
+                                                        <div class="product-img"> <a href="#" data-abc="true"> <img src="https://i.imgur.com/HxEEu5g.jpg" alt=""> </a>	
+                                                            <span><i class="fa fa-rupee"></i> 33,000</span>
+                                                             <div class="product-action"> 
+                                                                <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> 
+                                                                    <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> 
+                                                                    <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div> </div> </div> </div> </div>	
+                                                                    <div class="col-md-3">
+                                                                         <div class="product-wrapper mb-45 text-center">
+                                                                             <div class="product-img"> <a href="#" data-abc="true"> <img src="https://i.imgur.com/lAQxXCK.jpg" alt=""> </a>	
+                                                                                <span><i class="fa fa-rupee"></i> 23,000</span> 
+                                                                                <div class="product-action">
+                                                                                     <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> 
+                                                                                        <i class="fa fa-plus"></i> </a> 
+                                                                                        <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> 
+                                                                                        <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div> </div> </div> </div> </div> </div>	</div>
+
+
+
+<div>
+    <table class="table">
+        <thead>
+        <tr class="text-center">
+            <th>Image</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Delivery</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="col-md-8 offset-md-2">
+                <td class="align-middle">
+                    <img src="@item.ProductImage" alt="" style="width:150px">
+
+                </td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductId)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductName)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductPrice)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductCategory)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDelivery)</td>
+                <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDescription)</td>
+                <td class="align-middle">
+                    <a class="btn btn-outline-secondary" asp-action="GetProductById" asp-route-id="@item.ProductId">View</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-outline-secondary" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a>
+                        <a class="btn btn-outline-secondary" asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
+                    }
+
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

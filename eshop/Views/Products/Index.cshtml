@@ -1,59 +1,60 @@
+@using eshop.Data.Static
+@using EasyNet.Identity.EntityFrameworkCore.UI.Areas.Identity.Pages.Shared
 @model IEnumerable<Products>
 
 @{
     ViewData["Title"] = "List of Products";
 }
 
-<!DOCTYPE html>
-<html lang="">
+
+
 <head>
-    <title>All the jewels</title>
+    <link rel="stylesheet" href="./css/productlist.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 </head>
 
-<a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="AddProduct">Add a new Product</a>
+<partial name="_carousel"/>
+
+<div class="container d-flex justify-content-center mt-100">
+    
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-3">
+                <div class="product-wrapper mb-45 text-center">
+                    <div class="product-img">
+                        <a href="#" data-abc="true"> <img src="@item.ProductImage" class="img-fluid" alt=""> </a>
+                        <span class="text-center"><i class="fa fa-rupee"></i> @item.ProductPrice €</span>
+                        <div class="product-action">
+                            <div class="product-action-style">
+                                <a href="#"> <i class="bi bi-eye"></i> </a>
+                                <a href="#"> <i class="bi bi-bookmark-heart"></i> </a>
+                                <a href="#">
+                                    <i class="bi bi-bag-plus"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-<body>
-    <h1>All the jewels</h1>
-    <div>
-        <table class="table">
-            <thead>
-                <tr class="text-center">
-                    <th>Image</th>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Delivery</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr class="col-md-8 offset-md-2">
-                        <td class="align-middle">
-                            <img  src="@item.ProductImage" alt="" style="width:150px">
-                        </td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductId)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductName)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductPrice)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductCategory)</td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.ProductDelivery)</td>
-                        <td class="align-middle expandable-cell">@Html.DisplayFor(modelItem => item.ProductDescription)</td>
-                        <td class="align-middle">
-                            <a  asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.ProductId">
-                                <img src="Image/bag-plus-fill.svg" alt="Add to shopping cart"/>
-                            </a>
-                            <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="GetProductById" asp-route-id="@item.ProductId">Details</a>
-                            <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a>
-                            <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+
+        }
     </div>
-</body>
-</html>
+</div>
+
+        
+        
+
+
+
+
+
