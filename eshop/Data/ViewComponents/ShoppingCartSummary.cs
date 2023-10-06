@@ -22,7 +22,6 @@ public class ShoppingCartSummary:ViewComponent
         
         return View(items.Sum(item => item.Amount));
     }
-
 }
 
 // petit panier au dessus, pour le summary du panier
