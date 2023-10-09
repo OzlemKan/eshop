@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace eshop.Controllers;
 
-[Authorize (Roles = UserRoles.Admin)]
 public class AccountController : Controller
 {
 
@@ -73,7 +72,11 @@ public class AccountController : Controller
     }
     
     [AllowAnonymous]
-    public IActionResult Register() => View(RegisterVM);
+    public IActionResult Register() => View( new RegisterVM
+    {
+        Password = null,
+        ConfirmPassword = null
+    });
 
     [HttpPost]
 
