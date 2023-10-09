@@ -33,29 +33,30 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     // add to the shopping cart
 
     public void AddItemToCart(Products products)
-        // check if we already have the product in our shopping cart, if yes : increase the amount by 1
-        // otherwise, add the new product to the shopping cart and set the amount to 1
     {
-        var shoppingCartItem = _context.ShoppingCartItems // create a var to check if shopping cart is empty
+        // Check if we already have the product in our shopping cart
+        var shoppingCartItem = _context.ShoppingCartItems
             .FirstOrDefault(n => n.Products != null && n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
 
-        if (shoppingCartItem == null)  // if we dont have this product in our cart, we are going to create a new shoppingCartItem
+        if (shoppingCartItem == null)
         {
+            // If the product is not in the cart, create a new shoppingCartItem
             shoppingCartItem = new ShoppingCartItem()
             {
-                ShoppingCartId = ShoppingCartId,
+                ShoppingCartId = ShoppingCartId, // Make sure ShoppingCartId is properly initialized
                 Products = products,
-                Amount = 1 // 1st item in the shopping bag, 1st product of that type
+                Amount = 1 // 1st item in the shopping cart, 1st product of that type
             };
-            _context.ShoppingCartItems.Add(shoppingCartItem); // add the shoppingCart to the db
+            _context.ShoppingCartItems.Add(shoppingCartItem); // Add the shoppingCartItem to the database
         }
-        else // OTHERWISE, if we already have, we increase by one
+        else
         {
-            shoppingCartItem.Amount++;
+            shoppingCartItem.Amount++; // If the product is already in the cart, increase the amount by one
         }
-        _context.SaveChanges();
 
+        _context.SaveChanges();
     }
+
 // DELETE
     public void RemoveItemFromCard(Products products)
     {

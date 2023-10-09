@@ -135,19 +135,7 @@ internal class Program
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllerRoute(
-                name: "products",
-                pattern: "products",
-                defaults: new { controller = "Products", action = "Index" }
-            );
-
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}"
-            );
-        });
+        
 
             AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
 

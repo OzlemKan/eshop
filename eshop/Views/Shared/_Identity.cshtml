@@ -3,21 +3,30 @@
 
 @if (!User.Identity.IsAuthenticated)
 {
-    <a class="btn btn-outline-secondary btn-light" asp-controller="Account" asp-action="Login">
+    
+    <form asp-controller="Account" asp-action="Login">
+    <button class="btn" style="background-color: #A48374; color: #EBE3DB" asp-controller="Account" asp-action="Login">
         <i class="bi bi-box-arrow-in-right"></i> Log in
-    </a>
-                    
-    <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Register">
+    </button>
+    </form>
+        
+        
+    <span style="padding: 5px;"></span>
+    
+    
+    <form asp-controller="Account" asp-action="Register">
+    <button class="btn" style="color: #A48374; background-color: #EBE3DB" asp-controller="Account" asp-action="Register">
         <i class="bi bi-person-plus"></i> Register
-    </a>
+    </button>
+    </form>
     
    
-}
+    }
 else
 {
     @*User profile section*@
     <div class="dropdown">
-        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown"
+        <button class="btn dropdown-toggle" style="background-color: #A48374; color: #EBE3DB" type="button" id="profile-btn" data-bs-toggle="dropdown"
                 aria-expanded="false">
             <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
         </button>
@@ -46,7 +55,7 @@ else
     </div>
     <span style="padding: 5px;"></span>
     <form asp-controller="Account" asp-action="Logout">
-        <button class="btn btn-secondary my-2 my-sm-0">
+        <button class="btn" style="color: #A48374; background-color: #EBE3DB">
             <i class="bi bi-box-arrow-in-right"></i> Log out
         </button>
     </form>
