@@ -1,4 +1,5 @@
 @using Microsoft.AspNetCore.Identity
+@using eshop.Data.ViewComponents
 @inject UserManager<ApplicationUser> UserManager;
 
 @if (!User.Identity.IsAuthenticated)
@@ -15,10 +16,12 @@
     
     
     <form asp-controller="Account" asp-action="Register">
-    <button class="btn" style="color: #A48374; background-color: #EBE3DB" asp-controller="Account" asp-action="Register">
-        <i class="bi bi-person-plus"></i> Register
-    </button>
+        <button class="btn" style="color: #A48374; background-color: #EBE3DB" asp-controller="Account" asp-action="Register">
+            <i class="bi bi-person-plus"></i> Register
+        </button>
     </form>
+    
+    <button> @await Component.InvokeAsync(typeof(ShoppingCartSummary))</button>
     
    
     }
