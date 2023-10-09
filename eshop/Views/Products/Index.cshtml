@@ -2,6 +2,8 @@
 @using EasyNet.Identity.EntityFrameworkCore.UI.Areas.Identity.Pages.Shared
 @model IEnumerable<Products>
 
+
+
 @{
     ViewData["Title"] = "List of Products";
 }
@@ -35,10 +37,21 @@
                         <span class="text-center"><i class="fa fa-rupee"></i> @item.ProductPrice €</span>
                         <div class="product-action">
                             <div class="product-action-style">
-                                <a href="#"> <i class="bi bi-eye"></i> </a>
-                                <a href="#"> <i class="bi bi-bookmark-heart"></i> </a>
-                                <a href="#">
-                                    <i class="bi bi-bag-plus"></i> </a>
+                                <a asp-action="GetProductById" asp-route-id="@item.ProductId"> <i class="bi bi-eye"></i> </a>
+                                @if (!User.Identity.IsAuthenticated || !User.IsInRole("Admin"))
+                                {
+                                    <a href="#"> <i class="bi bi-bookmark-heart"></i> </a>
+                                    <a asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.ProductId">
+                                        <i class="bi bi-bag-plus"></i> </a>
+
+                                }
+                                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                 {
+                                     <a asp-controller="Products" asp-action="DeleteProduct" asp-route-id="@item.ProductId">
+                                         <i class="bi bi-trash"></i> </a>
+                                     <a asp-controller="Products" asp-action="EditProduct" asp-route-id="@item.ProductId">
+                                         <i class="bi bi-pencil"></i> </a>
+                                 }
                             </div>
                         </div>
                     </div>

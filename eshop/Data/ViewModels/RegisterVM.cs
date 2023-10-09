@@ -30,7 +30,7 @@ public class RegisterVM
     [Required (ErrorMessage = "Birthday is required")]
     [DataType(DataType.Date)]
     [Display(Name = "Birthday")]
-    public DateOnly Birthday { get; set; }
+    public DateTime Birthday { get; set; }
     
     [Display(Name = "Password")]
     [DataType(DataType.Password)]

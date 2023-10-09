@@ -41,7 +41,7 @@ public class AppDbInitializer
                     EmailConfirmed = true,
                     Address = "address",
                     PhoneNumber = "098765",
-                    Birthday = new DateOnly(1990, 1, 1)
+                    Birthday = new DateTime(1990, 1, 1)
 
                 };
                 await userManager.CreateAsync(newAdminUser, "Coding@1234?");
@@ -62,7 +62,7 @@ public class AppDbInitializer
                     PhoneNumber = "098765",
                     Email = appUserEmail,
                     EmailConfirmed = true,
-                    Birthday = new DateOnly(1990, 1, 1)
+                    Birthday = new DateTime(1990, 1, 1)
 
                 };
                 var createAppUserResult = await userManager.CreateAsync(newAppUser, "Coding@1234?");
