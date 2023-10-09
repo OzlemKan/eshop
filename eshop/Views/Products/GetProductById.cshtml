@@ -108,22 +108,26 @@
       </div>
   </div>
   @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-      {
-          <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
-      }
-      <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="Index">Show All</a>
+      {<div class="col-md-12">
       
-      <div class="col-md-12">
-          <div class="card-footer">
-              <p class="card-text">
+           <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
+           <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="DeleteProduct" asp-route-id="@Model.ProductId">Delete</a>
+
+       </div>
+       
+      }
+  <div class="col-md-12">
+        
+             <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="Index">Show All</a>
+                    </div>
+      
+             <div class="col-md-12">
+          
                   <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
                       <i class="bi bi-bag-plus-fill"> Add one to my cart for @Model.ProductPrice.ToString("c")</i>
                   </a>  
-              </p>
-          </div>
-      </div>
-     
-  <a asp-action="Index">Show All</a></div>
+         
+      </div></div>
 </section>
 <!-- Section: Design Block -->
 

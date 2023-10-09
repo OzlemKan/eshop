@@ -32,108 +32,109 @@
                         </div>
                     }
 
-         <form asp-action="Register">
-                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                  <label asp-for="FirstName" class="form-label" for="form3Example1">First name</label>
-                  <input asp-for="FirstName" type="text" id="form3Example1" class="form-control" />
+            <form asp-controller="Account" asp-action="Register">
+              <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label asp-for="FirstName" class="form-label" for="form3Example1">First name</label>
+                    <input asp-for="FirstName" type="text" id="form3Example1" class="form-control" />
                   
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label asp-for="LastName" class="form-label" for="form3Example2">Last name</label>
+                    <input asp-for="LastName" type="text" id="form3Example2" class="form-control" />
+                  
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                  <label asp-for="LastName" class="form-label" for="form3Example2">Last name</label>
-                  <input asp-for="LastName" type="text" id="form3Example2" class="form-control" />
-                  
-                </div>
-              </div>
-            </div>
 
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <label asp-for="Email" class="form-label" for="form3Example3">Email address</label>
-              <input asp-for="Email" type="email" id="form3Example3" class="form-control" />
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label asp-for="Email" class="form-label" for="form3Example3">Email address</label>
+                <input asp-for="Email" type="email" id="form3Example3" class="form-control" />
                 
-            </div>
+              </div>
             
-            <div class="form-outline mb-4">
+              <div class="form-outline mb-4">
                 
-              <label asp-for="Address" class="form-label" for="form3Example2">Address</label>
-              <input asp-for="Address" type="text" id="form3Example2" class="form-control" />
+                <label asp-for="Address" class="form-label" for="form3Example2">Address</label>
+                <input asp-for="Address" type="text" id="form3Example2" class="form-control" />
                     
                 
-            </div>
+              </div>
             
-            <div class="row">
-                          <div class="col-md-6 mb-4">
-                            <div class="form-outline">
-                               <label asp-for="PhoneNumber" class="form-label" for="form3Example1">Phone Number</label>
-                              <input asp-for="PhoneNumber" type="text" id="form3Example1" class="form-control" />
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label asp-for="PhoneNumber" class="form-label" for="form3Example1">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="text" id="form3Example1" class="form-control" />
                              
-                            </div>
-                          </div>
-                          <div class="col-md-6 mb-4">
-                            <div class="form-outline">
-                              <label asp-for="Birthday" class="form-label" for="form3Example2">Birthday</label>
-                              <input asp-for="Birthday" type="date" id="form3Example2" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label asp-for="Birthday" class="form-label" for="form3Example2">Birthday</label>
+                    <input asp-for="Birthday" type="date" id="form3Example2" class="form-control" />
                               
-                            </div>
-                          </div>
-                        </div>
+                  </div>
+                </div>
+              </div>
                         
-<div class="row">
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <label asp-for="Password" class="form-label" for="form3Example4">Password</label>
-              <input asp-for="Password" type="password" id="form3Example4" class="form-control" />
+              <div class="row">
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <label asp-for="Password" class="form-label" for="form3Example4">Password</label>
+                  <input asp-for="Password" type="password" id="form3Example4" class="form-control" />
                 
-            </div>
+                </div>
             
-             <!-- Confirm Password input -->
-                        <div class="form-outline mb-4">
-                          <label asp-for="ConfirmPassword" class="form-label" for="form3Example4">Confirm Password</label>
-                          <input asp-for="ConfirmPassword" id="form3Example4" class="form-control" />
+                <!-- Confirm Password input -->
+                <div class="form-outline mb-4">
+                  <label asp-for="ConfirmPassword" class="form-label" for="form3Example4">Confirm Password</label>
+                  <input asp-for="ConfirmPassword" id="form3Example4" class="form-control" />
                             
-                        </div>
-            </div>
+                </div>
+              </div>
            
 
-            <!-- Checkbox -->
-            <div class="form-check d-flex justify-content-center mb-4">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-              <label class="form-check-label" for="form2Example33">
-                Subscribe to our newsletter
-              </label>
-            </div>
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                <label class="form-check-label" for="form2Example33">
+                  Subscribe to our newsletter
+                </label>
+              </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">
-              Sign up
-            </button>
+              <!-- Submit button -->
+              <div class="form-group">
+                <input class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" type="submit" value="Sign up" />
+              </div>
 
-            <!-- Register buttons -->
-            <div class="text-center">
-              <p>or sign up with:</p>
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="bi bi-facebook"></i>
-              </button>
+              <!-- Register buttons -->
+              <div class="text-center">
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="bi bi-facebook"></i>
+                </button>
 
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="bi bi-google"></i>
-              </button>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="bi bi-google"></i>
+                </button>
 
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="bi bi-twitter"></i>
-              </button>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="bi bi-twitter"></i>
+                </button>
 
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="bi bi-github"></i>
-              </button>
-            </div>
-          </form>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="bi bi-github"></i>
+                </button>
+              </div>
+            </form>
+            
         </div>
       </div>
     </div>
