@@ -55,6 +55,7 @@
     <Content Include="..\..\..\Desktop\image bijoux\PhiPhiearrings_cf0307b6-e18a-48cf-9169-f1442ed3e5bc_1800x1800.webp">
       <Link>wwwroot\bijoux\PhiPhiearrings_cf0307b6-e18a-48cf-9169-f1442ed3e5bc_1800x1800.webp</Link>
     </Content>
+    <Content Remove="wwwroot\Image\logo_main.png" />
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\customers\DeleteCustomer.cshtml" />

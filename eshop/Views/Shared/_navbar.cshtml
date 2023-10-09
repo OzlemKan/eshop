@@ -1,10 +1,7 @@
 <header>   
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3 justify-content-center">
     <div class="container-fluid">
-         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="Image/Logo_Isis.png" alt="Logo" width="150px" height="150px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+         
         <div class="collapse navbar-collapse" id="navbarsExample02">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
@@ -23,6 +20,11 @@
                     <a class="nav-link active" aria-current="page" href="#">Bracelets</a>
                 </li>
                 <li class="nav-item">
+                <a class="navbar-brand" asp-area="" asp-controller="Products" asp-action="Index"> <img src="Image/logo_main.svg" alt="Logo" width="200px" height="200px"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
                                                              
 
 
@@ -34,14 +36,18 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" asp-controller="Products" asp-action="Index">Products</a>
                             <a class="dropdown-item" asp-controller="Account" asp-action="Users">Customers</a>
-                            <a class="dropdown-item" asp-controller="" asp-action="">Orders</a>
+                            <a class="dropdown-item" asp-controller="Orders" asp-action="">Orders</a>
                         </div>
                     </li>
                 }
                 
             </ul>
-             <ul class="navbar-nav">
-                 @await Component.InvokeAsync("ShoppingCartSummary")</ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    @await Component.InvokeAsync("ShoppingCartSummary")
+                </li>
+                
+            </ul>
             
             <partial name="_Identity.cshtml"/>
         </div>
