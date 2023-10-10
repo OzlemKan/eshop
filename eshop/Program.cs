@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using eshop.Data;
+using eshop.Data.Cart;
 using eshop.Data.Services;
 using eshop.Data.ViewModels;
 using eshop.Models;
@@ -31,7 +32,7 @@ internal class Program
 
 
 
-        builder.Services.AddScoped<eshop.Data.Cart.ShoppingCart>();
+        
 
 // APPDBCONTEXT
         builder.Services.AddDbContext<AppDbContext>(options =>
@@ -43,6 +44,10 @@ internal class Program
         builder.Services.AddScoped<IAccountService, AccountService>();
         builder.Services.AddScoped<IProductService, ProductService>();
         builder.Services.AddScoped<IOrdersService, OrdersService>();
+
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+       // builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc))();
+        builder.Services.AddSession();
 
 //authorization and authentication
 
@@ -68,6 +73,7 @@ internal class Program
 
 
         app.UseRouting();
+        app.UseSession();
 
 
 
@@ -143,5 +149,7 @@ internal class Program
             app.Run();
         
     }
+
+   
 }
 
