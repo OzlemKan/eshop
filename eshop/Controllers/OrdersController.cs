@@ -49,6 +49,6 @@ public class OrdersController : Controller
     {
         var item = await _productService.GetByIdAsync(id);
         _shoppingCart.RemoveItemFromCard(item);
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(ShoppingCart));
     }
 }

@@ -30,10 +30,7 @@ internal class Program
             .Build() ?? throw new ArgumentNullException(
             "new ConfigurationBuilder()\n    .SetBasePath(builder.Environment.ContentRootPath)\n    .AddJsonFile(\"appsettings.json\", optional: false, reloadOnChange: true)\n    .Build()");
 
-
-
         
-
 // APPDBCONTEXT
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
@@ -46,7 +43,7 @@ internal class Program
         builder.Services.AddScoped<IOrdersService, OrdersService>();
 
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-       // builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc))();
+       // builder.Services.AddScoped(ShoppingCart.GetShoppingCart)();
         builder.Services.AddSession();
 
 //authorization and authentication

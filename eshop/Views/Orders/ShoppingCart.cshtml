@@ -7,54 +7,74 @@
 }
 
 
-<div class="row">
-    <div class="col-md-8 offset-2">
-        <div class="text-center"></div>
-        <h2>Your basket</h2>
-    </div>
-    
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Selected amount</th>
-            <th>Products</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-            <th></th>
-        </tr>
-        </thead> 
-        <tbody>
-        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
-        {
-            <tr>
-                <td class="align-middle">@item.Amount</td>
-                <td class="align-middle">@item.Products.ProductName</td>
-                <td class="align-middle">@item.Products.ProductPrice.ToString("C")</td>
-                <td class="align-middle">@((item.Amount*item.Products.ProductPrice).ToString("C"))</td>
-                <td class="align-middle">
-                    <a  asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Products.ProductId">
-                        <i class="bi bi-bag-dash-fill"></i>
-                    </a>
-                    <span>||</span>
-                    <a  asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Products.ProductId">
-                        <i class="bi bi-bag-plus-fill"></i>
-                    </a>
-                </td>
-            </tr> 
-        }
-        </tbody>    
-        <tfoot>
-            <tr>
-                <td colspan="2"></td>
-                <td><b>Total</b></td>
-                <td>@Model.ShoppingCartTotal.ToString("C")</td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
-    <div class="text-center">
-        <btn class="btn-group">
-            <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Products" asp-action="Index">Continue Shopping</a>
-        </btn>
-    </div>
+<div class="container">
+     <div class="row">
+         <div class="col-sm-12 col-md-10 col-md-offset-1">
+             <h2>Your basket</h2>
+             <table class="table table-hover">
+                 <thead>
+                     <tr>
+                         <th>Products</th>
+                         <th>Selected amount</th>
+                         <th class="text-center">Price</th>
+                         <th class="text-center" >Subtotal</th>
+                         <th></th>
+                     </tr>
+                 </thead> 
+                 <tbody>
+                 @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                 {
+                     <tr>
+                         <td class="col-sm-8 col-md-6">
+                             <div class="media">
+                                 <a class="thumbnail pull-left" href="#"> <img class="media-object" style="width: 72px; height: 72px;">@item.Products.ProductImage</a>
+                                 <div class="media-body">
+                                     <h4 class="media-heading"><a href="#">@item.Products.ProductName</a></h4>
+                                     <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                 </div>
+                             </div>
+                         </td>
+                         <td class="col-sm-1 col-md-1" style="text-align: center">
+                             <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+                         </td>
+                         <td class="col-sm-1 col-md-1 text-center">@item.Amount</td>
+                         <td class="col-sm-1 col-md-1 text-center"><strong>@item.Products.ProductPrice.ToString("C")</strong></td>
+                         <td class="col-sm-1 col-md-1 text-center"><strong>@((item.Amount * item.Products.ProductPrice).ToString("C"))</strong></td>
+                         <td class="align-middle">
+                             <a asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Products.ProductId">
+                                 <i class="bi bi-bag-dash-fill"></i>
+                             </a>
+                             <span>||</span>
+                             <a asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Products.ProductId">
+                                 <i class="bi bi-bag-plus-fill"></i>
+                             </a>
+                         </td>
+                     </tr> 
+                 }
+                 
+                 </tbody>    
+                 <tfoot>
+                 <tr>
+                    <td><h5>Estimated shipping</h5></td>
+                    <td class="text-right"><h5><strong>6,9€</strong></h5></td>
+                 </tr>
+                 <tr>
+                     <td><h5>Subtotal</h5></td>
+                     <td>@Model.ShoppingCartTotal.ToString("C")</td>
+                     
+                     <td class="text-right"></td>
+                 </tr>
+                 <tr>
+                     <td><h5>Total</h5></td>
+                     <td class="text-right"><h5><strong></strong></h5></td>
+                 </tr>
+                 </tfoot>
+             </table>
+             <div class="text-center">
+                 <button class="btn-group">
+                     <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Products" asp-action="Index">Continue Shopping</a>
+                 </button>
+             </div>
+         </div>
+     </div>
 </div>
