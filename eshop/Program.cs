@@ -63,10 +63,6 @@ internal class Program
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-
-
-
-
         app.UseRouting();
 
 
@@ -86,44 +82,7 @@ internal class Program
                 if (user != null)
                 {
                     var passwordCheck = await userManager.CheckPasswordAsync(user, loginVM.Password);
-                    if (passwordCheck)
-                    {
-                        try
-                        {
-                            var issuer = builder.Configuration["Jwt:Issuer"];
-                            var audience = builder.Configuration["Jwt:Audience"];
-                            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
-                            var tokenDescriptor = new SecurityTokenDescriptor
-                            {
-                                Subject = new ClaimsIdentity(new[]
-                                {
-                                    new Claim("Id", Guid.NewGuid().ToString()),
-                                    new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                                    new Claim(JwtRegisteredClaimNames.Email, user.UserName),
-                                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                                }),
-                                Expires = DateTime.UtcNow.AddMinutes(5),
-                                Issuer = issuer,
-                                Audience = audience,
-                                SigningCredentials = new SigningCredentials(
-                                    new SymmetricSecurityKey(key),
-                                    SecurityAlgorithms.HmacSha512Signature)
-                            };
-                            var tokenHandler = new JwtSecurityTokenHandler();
-                            var token = tokenHandler.CreateToken(tokenDescriptor);
-                            var jwtToken = tokenHandler.WriteToken(token);
-                            var stringToken = tokenHandler.WriteToken(token);
-
-                            // Return the JWT token as a success result
-                            return Results.Ok(new { token = stringToken });
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle any exceptions that occur during token generation
-                            // Log the exception or return an error response
-                            return Results.StatusCode(500);
-                        }
-                    }
+                   
                 }
 
                 // Return an unauthorized result if the user is not found or password check fails

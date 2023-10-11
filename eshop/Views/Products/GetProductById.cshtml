@@ -5,131 +5,30 @@
     ViewData["Title"] = "Details of the product";
 }
 
-<!-- Section: Design Block -->
-<section class="text-center">
-  <!-- Background image -->
-  <div class="p-5 bg-image" style="
-        background-image: url('https://images.pexels.com/photos/4735888/pexels-photo-4735888.jpeg');
-        height: 300px;
-        "></div>
-  <!-- Background image -->
-
-  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
-        margin-top: -100px;
-        background: hsla(0, 0%, 100%, 0.8);
-        backdrop-filter: blur(30px);
-        ">
-      <div class="card-body py-5 px-md-5">
-
-          <div class="row d-flex justify-content-center">
-              <div class="col-lg-8">
-                  <h2 class="fw-bold mb-5">Product Details</h2>
-                  @if (TempData["Error"] != null)
-                  {
-                      <div class="col-md-12 alert alert-danger">
-                          <span><b>Sorry!</b> @TempData["Error"] </span>
-            
-                      </div>
-                  }
-
+<section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="@Model.ProductImage" alt="..." /></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">@Model.ProductName</h1>
+                        <div class="fs-5 mb-5">
                  
-            
-                      <div class="col mb-4">
-                          <div>
-                              <img id="ProductImagePreview" style="max-width: 200px; max-height: 200px;" alt="" src=""/>
-                          </div>
-                          
-                          @if (User.Identity.IsAuthenticated)
-                          {
-                              @if (User.IsInRole("Admin"))
-                              {
-                                  <div class="form-outline">
-                                      <label asp-for="ProductImage" class="form-label">Product Image</label>
-                                      <input asp-for="ProductImage" type="text" class="form-control" readonly/>
-                                      <span asp-validation-for="ProductImage"></span>
-                                  </div>
-                              }
-                          }
-                          else
-                          {
-                              <div class="form-outline" hidden>
-                                  <label asp-for="ProductImage" class="form-label">Product Image</label>
-                                  <input asp-for="ProductImage" type="text" class="form-control" readonly/>
-                                  <span asp-validation-for="ProductImage"></span>
-                              </div>
-                          }
-                      </div>
-           
-                      <div class="row">
-                          <div class="col-md-6 mb-4">
-                              <div class="form-outline">
-                                  <label asp-for="ProductName" class="form-label" for="form3Example2">Product Name</label>
-                                  <input asp-for="ProductName" type="text" id="form3Example5" class="form-control" readonly/>
-                  
-                              </div>
-                          </div>
-            
-
-            
-                          <div class="col-md-6 mb-4">
-                              <div class="form-outline">
-                                  <label asp-for="ProductCategory" class="form-label" for="form3Example3">Product Category</label>
-                                  <select asp-for="ProductCategory" asp-items="Html.GetEnumSelectList<ProductCategory>()" id="form3Example3" class="form-control" readonly></select>
-
-                              </div>
-                          </div>
-            
-                          <div class="form-outline mb-4">
-                
-                              <label asp-for="ProductDescription" class="form-label" for="form3Example2">Description</label>
-                              <textarea asp-for="ProductDescription" type="text" id="form3Example4" class="form-control" readonly></textarea>
-                    
-                
-                          </div>
-            
-                          <div class="row">
-                              <div class="col-md-6 mb-4">
-                                  <div class="form-outline">
-                                      <label asp-for="ProductPrice" class="form-label" for="form3Example1">Price</label>
-                                      <input asp-for="ProductPrice" type="text" id="form3Example6" class="form-control" readonly/>
-                             
-                                  </div>
-                              </div>
-                              <div class="col-md-6 mb-4">
-                                  <div class="form-outline">
-                                      <label asp-for="ProductDelivery" class="form-label" for="form3Example2">Delivery</label>
-                                      <input asp-for="ProductDelivery" type="text" id="form3Example2" class="form-control" readonly/>
-                              
-                                  </div>
-                              </div>
-                          </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-      {<div class="col-md-12">
-      
-           <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit</a>
-           <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="DeleteProduct" asp-route-id="@Model.ProductId">Delete</a>
-
-       </div>
-       
-      }
-  <div class="col-md-12">
-        
-             <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-action="Index">Show All</a>
+                            <span>@Model.ProductPrice €</span>
+                        </div>
+                        <p class="lead">@Model.ProductDescription</p>
+                        <div class="d-flex">
+                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                            
+                                 <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
+                                                                                  <i class="bi bi-bag-plus-fill"> Add to cart </i>
+                                                                              </a>  
+                            
+                            
+                        </div>
                     </div>
-      
-             <div class="col-md-12">
-          
-                  <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
-                      <i class="bi bi-bag-plus-fill"> Add one to my cart for @Model.ProductPrice.ToString("c")</i>
-                  </a>  
-         
-      </div></div>
-</section>
-<!-- Section: Design Block -->
+                </div>
+            </div>
+        </section>
 
 
 @section Scripts
