@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using eshop.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace eshop.Data.Cart;
 
 public class ShoppingCart // add and remove data from shopping cart, the shopping cart items get stored in the db
