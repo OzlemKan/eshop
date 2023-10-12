@@ -4,6 +4,7 @@ using System.Text;
 using eshop.Data;
 using eshop.Data.Cart;
 using eshop.Data.Services;
+using eshop.Data.ViewComponents;
 using eshop.Data.ViewModels;
 using eshop.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -30,7 +31,10 @@ internal class Program
             .Build() ?? throw new ArgumentNullException(
             "new ConfigurationBuilder()\n    .SetBasePath(builder.Environment.ContentRootPath)\n    .AddJsonFile(\"appsettings.json\", optional: false, reloadOnChange: true)\n    .Build()");
 
-        
+
+
+        builder.Services.AddScoped<eshop.Data.Cart.ShoppingCart>();
+
 // APPDBCONTEXT
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
@@ -71,7 +75,6 @@ internal class Program
 
         app.UseRouting();
         app.UseSession();
-
 
 
 
@@ -146,7 +149,5 @@ internal class Program
             app.Run();
         
     }
-
-   
 }
 
