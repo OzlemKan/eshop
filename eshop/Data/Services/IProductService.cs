@@ -6,6 +6,7 @@ namespace eshop.Data.Services;
 public interface IProductService
 {
     Task<IEnumerable<Products>> GetAllAsync();
+    
 
     Task<Products> GetByIdAsync(int id);
 
@@ -14,7 +15,8 @@ public interface IProductService
     Task <Products> UpdateAsync(int id, Products newProduct);
 
     Task DeleteAsync(int id);
-
-   
-   
+    
+    Task<List<ProductCategory>> GetProductCategory();
+    
+    
 }

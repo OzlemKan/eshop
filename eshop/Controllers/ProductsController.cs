@@ -1,3 +1,4 @@
+using ASP;
 using eshop.Data;
 using eshop.Data.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,15 @@ public class ProductsController : Controller
         return View(allProducts);
     }
     
+    // FILTER BY CATEGORY
+   
+    public async Task<IActionResult> ProductCategory()
+    {
+        var productsCategory = _service.GetProductCategory();
+        
+        return View(ProductByCategory);
+    }
+
 
     public async Task <IActionResult> EditProduct(int id)
     
@@ -99,4 +109,7 @@ public class ProductsController : Controller
 
         return View(productDetails);
     }
+    
+    
+    
 }

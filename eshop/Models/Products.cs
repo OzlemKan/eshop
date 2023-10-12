@@ -32,5 +32,5 @@ public class Products
     public required string ProductDelivery { get; set; }
     
     [Display(Name = "Category")]
-    public  ProductCategory ProductCategory { get; set; }
+    public  int ProductCategory { get; set; }
 }

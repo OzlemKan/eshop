@@ -1,8 +1,35 @@
 
-
 .navbar {
-  margin-bottom: 20px;
-}
-.summary {
+  display: flex;
+  padding: 0;
+  border: none;
   
+    .ul {
+        list-style: none;
+        margin: 0;
+    }
+    .nav-item {
+        display: flex;
+        align-items: center;
+        .nav-link:hover {
+            color: #412F26;
+        }
+        .nav-link {
+            font-weight: 500;
+            font-size: larger;
+        }
+    }
+    .summary {
+        font-weight: bold;
+    }
+    .navbar-brand {
+        position: relative;
+        
+    }
+    img{
+        width:250px;
+        height:250px;
+        margin: 0;
+        padding: 0;
+    }
 }

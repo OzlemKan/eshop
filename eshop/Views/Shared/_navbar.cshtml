@@ -1,33 +1,33 @@
-<header>   
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container-fluid">
-         <a class="navbar-brand"  asp-controller="Products" asp-action="Index"> <img src="Image/Logo_Isis.png" alt="Logo" width="120px" height="120px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExample02">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sets</a>c
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Rings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Necklaces</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Bracelets</a>
-                </li>
-                <li class="nav-item summary">
-                   @await  Component.InvokeAsync("ShoppingCartSummary")
-                </li>
-            </ul>
-            <partial name="_Identity.cshtml"/>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand" asp-controller="Products" asp-action="Index">
+        <img src="Image/Logo_Isis.png" alt="Logo">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link active" asp-controller="Products" asp-action="Index" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" asp-controller="Products" asp-action="ProductCategory" aria-current="page">Sets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" asp-controller="Products" asp-action="ProductCategory" aria-current="page">Rings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" asp-controller="Products" asp-action="ProductCategory" aria-current="page">Necklaces</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" asp-controller="Products" asp-action="ProductCategory" aria-current="page">Bracelets</a>
+            </li>
+        </ul>
+        <div class="navbar-nav right">
+            <div class="nav-item active">
+                <partial name="_Identity.cshtml"/>
+            </div>
+            <div class="nav-item summary">
+                @await Component.InvokeAsync("ShoppingCartSummary")
+            </div>
         </div>
     </div>
 </nav>
-</header> 

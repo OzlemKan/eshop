@@ -28,6 +28,26 @@ public class HomeController : Controller
         return View();
     }
 
+    // public IActionResult Bracelets()
+    // {
+    //     return View();
+    // }
+    // public IActionResult Sets()
+    // {
+    //     return View();
+    // }
+    // public IActionResult Rings()
+    // {
+    //     return View();
+    // }
+    //
+    // public IActionResult Necklaces()
+    // {
+    //     return View();
+    // }
+    //
+    
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

@@ -6,29 +6,30 @@
 }
 
 <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="@Model.ProductImage" alt="..." /></div>
-                    <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder">@Model.ProductName</h1>
-                        <div class="fs-5 mb-5">
-                 
-                            <span>@Model.ProductPrice €</span>
-                        </div>
-                        <p class="lead">@Model.ProductDescription</p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            
-                                 <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
-                                                                                  <i class="bi bi-bag-plus-fill"> Add to cart </i>
-                                                                              </a>  
-                            
-                            
-                        </div>
-                    </div>
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6">
+                <img class="card-img-top mb-5 mb-md-0" src="@Model.ProductImage" alt="..."/>
+            </div>
+            <div class="col-md-6">
+                <h1 class="display-5 fw-bolder">@Model.ProductName</h1>
+                <div class="fs-5 mb-5">
+
+                    <span>@Model.ProductPrice €</span>
+                </div>
+                <p class="lead">@Model.ProductDescription</p>
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem"/>
+
+                    <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.ProductId">
+                        <i class="bi bi-bag-plus-fill"> Add to cart </i>
+                    </a>
+                    
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
 
 @section Scripts
