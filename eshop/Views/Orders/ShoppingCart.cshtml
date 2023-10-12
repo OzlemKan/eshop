@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Shopping cart summary";
-     
+    var shippingCost = 6.9; // Frais de port fixes
 }
 
 
@@ -11,7 +11,7 @@
      <div class="row">
          <div class="col-sm-12 col-md-10 col-md-offset-1">
              <h2>Your basket</h2>
-             <table class="table table-hover">
+             <table class="table table">
                  <thead>
                      <tr>
                          <th>Products</th>
@@ -47,26 +47,22 @@
                          </tr> 
                      }
                  </tbody>    
-                 <tfoot>
-                 @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
-                 {
-                     <tr class="text-right">
-                         <td><h5>Estimated shipping</h5>
-                             <span>The cost depends on the shipping method.</span>
-                         </td>
-                         <td class="col-sm-1 col-md-1 text-center"><h5><strong>6,9€</strong></h5></td>
-                     </tr>
-                     <tr class="text-right">
-                         <td ><h5>Subtotal</h5></td>
-                         <td class="col-sm-1 col-md-1 text-center"><strong>@((item.Amount * item.Products.ProductPrice).ToString("C"))</strong></td>
-                         <td ></td>
-                     </tr>
-                     <tr class="text-right">
-                         <td><h5>Total</h5></td>
-                         <td class="col-sm-1 col-md-1 text-center"><h5>@(6.9 + Model.ShoppingCartTotal)</h5></td>
-                     </tr>
-                 }
-                 </tfoot>
+                    <tfoot>
+                        <tr class="text-right">
+                            <td><span><strong>Estimated shipping</strong></span><br/>
+                                <span>The cost depends on the shipping method.</span>
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center"><span><strong>@shippingCost.ToString("C")</strong></span></td>
+                        </tr>
+                        <tr class="text-right">
+                            <td><h5>Subtotal</h5></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@Model.ShoppingCartTotal.ToString("C")</strong></td>
+                        </tr>
+                        <tr class="text-right">
+                            <td><h5>Total</h5></td>
+                            <td class="col-sm-1 col-md-1 text-center"><h5>@(shippingCost + Model.ShoppingCartTotal)</h5></td>
+                        </tr>
+                    </tfoot>
              </table>
              <div class="text-center">
                  <btn type="button" class="btn-group">
