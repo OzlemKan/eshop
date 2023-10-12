@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sets</a>
+                    <a class="nav-link active" aria-current="page" href="#">Sets</a>c
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Rings</a>
@@ -22,12 +22,10 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Bracelets</a>
                 </li>
-                <li class="nav-item">
-                
+                <li class="nav-item summary">
+                   @await  Component.InvokeAsync("ShoppingCartSummary")
+                </li>
             </ul>
-           
-                
-            
             <partial name="_Identity.cshtml"/>
         </div>
     </div>

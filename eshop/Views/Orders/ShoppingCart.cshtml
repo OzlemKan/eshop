@@ -17,7 +17,7 @@
                          <th>Products</th>
                          <th>Selected amount</th>
                          <th class="text-center">Price</th>
-                         <th class="text-center" >Subtotal</th>
+                         <th class="text-center">Subtotal</th>
                          <th></th>
                      </tr>
                  </thead> 
@@ -27,51 +27,53 @@
                          <tr>
                              <td class="col-sm-8 col-md-6">
                                  <div class="media">
-                                     <a class="thumbnail pull-left" href="#"> <img class="media-object" style="width: 72px; height: 72px;">@item.Products.ProductImage</a>
                                      <div class="media-body">
-                                         <h4 class="media-heading"><a href="#">@item.Products.ProductName</a></h4>
+                                         <h4 class="media-heading">@item.Products.ProductName</h4>
                                          <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
                                      </div>
                                  </div>
                              </td>
-                             <td class="col-sm-1 col-md-1" style="text-align: center">
-                                 <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                             </td>
                              <td class="col-sm-1 col-md-1 text-center">@item.Amount</td>
                              <td class="col-sm-1 col-md-1 text-center"><strong>@item.Products.ProductPrice.ToString("C")</strong></td>
                              <td class="col-sm-1 col-md-1 text-center"><strong>@((item.Amount * item.Products.ProductPrice).ToString("C"))</strong></td>
-                             <td class="align-middle">
+                             <td class="col-sm-1 col-md-1 text-center">
                                  <a asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Products.ProductId">
-                                     <i class="bi bi-bag-dash-fill"></i>
+                                     <i class="bi bi-bag-dash-fill bagRemove"></i>
                                  </a>
-                                 <span>||</span>
                                  <a asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Products.ProductId">
-                                     <i class="bi bi-bag-plus-fill"></i>
+                                     <i class="bi bi-bag-plus-fill bagAdd"></i>
                                  </a>
                              </td>
                          </tr> 
                      }
                  </tbody>    
                  <tfoot>
-                     <tr>
-                        <td><h5>Estimated shipping</h5></td>
-                        <td class="text-right"><h5><strong>6,9€</strong></h5></td>
+                 @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                 {
+                     <tr class="text-right">
+                         <td><h5>Estimated shipping</h5>
+                             <span>The cost depends on the shipping method.</span>
+                         </td>
+                         <td class="col-sm-1 col-md-1 text-center"><h5><strong>6,9€</strong></h5></td>
                      </tr>
-                     <tr>
-                         <td><h5>Subtotal</h5></td>
-                         <td>@Model.ShoppingCartTotal.ToString("C")</td>
-                         <td class="text-right"></td>
+                     <tr class="text-right">
+                         <td ><h5>Subtotal</h5></td>
+                         <td class="col-sm-1 col-md-1 text-center"><strong>@((item.Amount * item.Products.ProductPrice).ToString("C"))</strong></td>
+                         <td ></td>
                      </tr>
-                     <tr>
+                     <tr class="text-right">
                          <td><h5>Total</h5></td>
-                         <td class="text-right"><h5><strong>@(6.9 + Model.ShoppingCartTotal).ToString("C")</strong></h5></td>
+                         <td class="col-sm-1 col-md-1 text-center"><h5>@(6.9 + Model.ShoppingCartTotal)</h5></td>
                      </tr>
+                 }
                  </tfoot>
              </table>
              <div class="text-center">
-                 <button class="btn-group">
+                 <btn type="button" class="btn-group">
                      <a class="btn btn-light" style="background-color: #A48374; color: #EBE3DB" asp-controller="Products" asp-action="Index">Continue Shopping</a>
-                 </button>
+                 </btn>
+                 <btn type="button" class="btn btn-light" style="background-color: #A48374; color: #EBE3DB">Checkout<span class="glyphicon glyphicon-play"></span>
+                 </btn>
              </div>
          </div>
      </div>
