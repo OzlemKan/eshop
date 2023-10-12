@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using eshop.Data;
+using eshop.Data.Cart;
 using eshop.Data.Services;
 using eshop.Data.ViewComponents;
 using eshop.Data.ViewModels;
