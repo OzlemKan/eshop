@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using eshop.Data;
 using eshop.Data.Services;
+using eshop.Data.ViewComponents;
 using eshop.Data.ViewModels;
 using eshop.Models;
 using Microsoft.AspNetCore.Authorization;
