@@ -43,6 +43,9 @@ internal class Program
         builder.Services.AddScoped<IAccountService, AccountService>();
         builder.Services.AddScoped<IProductService, ProductService>();
         builder.Services.AddScoped<IOrdersService, OrdersService>();
+        builder.Services.AddScoped(ShoppingCart.GetShoppingCart);
+        builder.Services.AddSession();
+
 
 //authorization and authentication
 
