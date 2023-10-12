@@ -1,6 +1,7 @@
-
+using System.Diagnostics.CodeAnalysis;
 using eshop.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace eshop.Data.Cart;
 
@@ -15,7 +16,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     {
         _context = context;
     }
-    
+
 
     // to get the session and to check  the service and check if we already have a service with that cart id, otherwise generate a new id and  set that id to new session
     public static ShoppingCart GetShoppingCart(IServiceProvider services)
@@ -28,7 +29,7 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
 
         return new ShoppingCart(context) { ShoppingCartId = cartId };
     }
-    
+
 //ADD   
     // add to the shopping cart
 
@@ -36,10 +37,10 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     {
         // Check if we already have the product in our shopping cart
         var shoppingCartItem = _context.ShoppingCartItems
-            .FirstOrDefault(n => n.Products != null && n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
+            .FirstOrDefault(n => n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem == null)
-        {
+        { 
             // If the product is not in the cart, create a new shoppingCartItem
             shoppingCartItem = new ShoppingCartItem()
             {
@@ -58,14 +59,15 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
     }
 
 // DELETE
+
     public void RemoveItemFromCard(Products products)
     {
         var shoppingCartItem = _context.ShoppingCartItems // check if we have this product in the shopping bag
-            .FirstOrDefault(n => n.Products != null && n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
+            .FirstOrDefault(n => n.Products.ProductId == products.ProductId && n.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem != null) // check if shopping cart is empty, if we have a shopping cart in the db
         {
-            if (shoppingCartItem.Amount > 1) 
+            if (shoppingCartItem.Amount > 1)
             {
                 shoppingCartItem.Amount--; // we increase by one
             }
@@ -74,23 +76,22 @@ public class ShoppingCart // add and remove data from shopping cart, the shoppin
                 _context.ShoppingCartItems.Remove(shoppingCartItem);
             }
         }
+
         _context.SaveChanges();
-        
     }
 
 // get all the shopping cart items 
 
     public List<ShoppingCartItem> GetShoppingCartItems()
     {
-        
-        return ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Include(n =>n.Products).ToList();
-          
+        return ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId)
+            .Include(n => n.Products).ToList();
     }
 //  get the  shopping cart total 
 
-    public double GetShoppingCartTotal()  => (double)_context.ShoppingCartItems
+    public double GetShoppingCartTotal() => _context.ShoppingCartItems
         .Where(n => n.ShoppingCartId == ShoppingCartId)
-        .Select(n => n.Products!.ProductPrice * n.Amount)
+        .Select(n => n.Products.ProductPrice * n.Amount)
         .Sum();
 }
 
